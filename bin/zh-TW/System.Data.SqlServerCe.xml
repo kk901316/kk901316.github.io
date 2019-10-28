@@ -1,0 +1,2965 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.SqlServerCe</name>
+  </assembly>
+  <members>
+    <member name="T:System.Data.SqlServerCe.AddOption">
+      <summary>決定加入訂閱時，應該將訂閱加入現有的資料庫，還是要建立一個新的資料庫。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.AddOption.ExistingDatabase">
+      <summary>將訂閱加入連接字串中定義的現有資料庫。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.AddOption.CreateDatabase">
+      <summary>在建立訂閱時，讓新的 SQL Server Compact 4.0 資料庫得以建立。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.CommitMode">
+      <summary>傳遞給 <see cref="M:System.Data.SqlServerCe.SqlCeTransaction.Commit" /> 函數時，CommitMode 會指定認可發生的時間。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.CommitMode.Deferred">
+      <summary>所有變更資料都會在使用者指定的排清間隔之後認可到磁碟中。預設的排清間隔為 10 秒，但是可以在 <see cref="P:System.Data.SqlServerCe.SqlCeConnection.ConnectionString" /> 內修改這個值。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.CommitMode.Immediate">
+      <summary>立刻認可變更動作。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.DbInsertOptions">
+      <summary>指定在使用 <see cref="System.Data.SqlServerCe.SqlCeResultSet.Insert" /> 方法時使用的選項。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbInsertOptions.KeepCurrentPosition">
+      <summary>插入新的資料列後保持目前的位置。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbInsertOptions.PositionOnInsertedRow">
+      <summary>將游標放在新插入的資料列上。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.DbRangeOptions">
+      <summary>指定 <see cref="M:System.Data.SqlServerCe.SqlCeCommand.SetRange(System.Data.SqlServerCe.DbRangeOptions,System.Object[],System.Object[])" /> 方法在指定要搜尋的索引範圍時所使用的選項。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbRangeOptions.InclusiveStart">
+      <summary>將 startData 值併入範圍內。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbRangeOptions.InclusiveEnd">
+      <summary>將 endData 值併入範圍內。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbRangeOptions.ExclusiveStart">
+      <summary>將 startData 值排除在範圍之外。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbRangeOptions.ExclusiveEnd">
+      <summary>將 endData 值排除在範圍之外。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbRangeOptions.ExcludeNulls">
+      <summary>將 null 值排除在範圍之外。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbRangeOptions.Prefix">
+      <summary>指定範圍，其中的索引值會以 startData 的值當做開頭。當使用 Prefix 選項時，endData 必須設定為 null。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbRangeOptions.Match">
+      <summary>指定範圍，其中的索引值會符合 startData 的值。當使用 Match 選項時，endData 必須設定為 null。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbRangeOptions.Default">
+      <summary>等於同時設定 <see cref="F:System.Data.SqlServerCe.DbRangeOptions.InclusiveStart" /> 及 <see cref="F:System.Data.SqlServerCe.DbRangeOptions.InclusiveEnd" /> 旗標。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.DbSeekOptions">
+      <summary>指定 <see cref="M:System.Data.SqlServerCe.SqlCeDataReader.Seek(System.Data.SqlServerCe.DbSeekOptions,System.Object[])" /> 方法如何在索引上搜尋的選項。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbSeekOptions.FirstEqual">
+      <summary>前移到索引上第一個符合的資料列 (按照索引順序)。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbSeekOptions.LastEqual">
+      <summary>前移到索引上最後一個符合的資料列 (按索引順序)。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbSeekOptions.AfterEqual">
+      <summary>前移至索引上最後一個符合的資料列。如果沒有符合的資料列，則按照索引順序，前移到具有搜尋值後面之值的第一個資料列。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbSeekOptions.After">
+      <summary>前移到第一個資料列，該資料列具有搜尋值後面的值 (按照索引順序)。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbSeekOptions.BeforeEqual">
+      <summary>前移到索引上第一個符合的資料列。如果沒有符合的值，則按照索引順序，前移到具有搜尋值前面之值的最後一個資料列。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DbSeekOptions.Before">
+      <summary>前移到最後一個資料列，該資料列具有搜尋值後面的值 (按照索引順序)。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.DropOption">
+      <summary>使用 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.DropSubscription(System.Data.SqlServerCe.DropOption)" /> 方法卸除訂閱時，指定要保留或刪除資料庫。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DropOption.LeaveDatabase">
+      <summary>當您使用 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.DropSubscription(System.Data.SqlServerCe.DropOption)" /> 方法卸除訂閱時，刪除使用者資料表中的複寫系統資料表與所有的複寫系統資料行，但是不刪除 SQL Server Compact 資料庫。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DropOption.DropDatabase">
+      <summary>使用 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.DropSubscription(System.Data.SqlServerCe.DropOption)" /> 方法卸除訂閱時，刪除 SQL Server Compact 資料庫。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.DropOption.UnregisterSubscription">
+      <summary>從訂閱移除註冊 SQL Server Compact 資料庫。 </summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.ExchangeType">
+      <summary>指定資料僅向上合併至發行者 (Publisher)，或是在發行者和訂閱者之間進行雙向合併。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ExchangeType.None">
+      <summary>未指定任何 <see cref="ExchangeType" /> 選項。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ExchangeType.Upload">
+      <summary>只將訂閱者變更合併到發行者。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ExchangeType.BiDirectional">
+      <summary>合併「發行者」和「訂閱者」之間的所有變更。這是預設值。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.NetworkType">
+      <summary>在設定 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件的 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.DistributorNetwork" /> 或 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.PublisherNetwork" /> 屬性時，指定所使用的網路通訊協定。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.NetworkType.DefaultNetwork">
+      <summary>在設定 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件的 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.DistributorNetwork" /> 或 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.PublisherNetwork" /> 屬性時，使用目前設定的「網路程式庫」。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.NetworkType.TcpIpSockets">
+      <summary>在設定 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件的 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.DistributorNetwork" /> 或 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.PublisherNetwork" /> 屬性時，使用「TCP/IP 通訊端網路程式庫」。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.NetworkType.MultiProtocol">
+      <summary>在設定 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件的 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.DistributorNetwork" /> 或 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.PublisherNetwork" /> 屬性時，使用「多重通訊協定網路程式庫」。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.OnStartTableDownload">
+      <summary>事件之使用者定義的委派，此委派會在開始從伺服器下載資料表變更時引發。</summary>
+      <param name="ar">由 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.BeginSynchronize(System.AsyncCallback,System.Data.SqlServerCe.OnStartTableUpload,System.Data.SqlServerCe.OnStartTableDownload,System.Data.SqlServerCe.OnSynchronization,System.Object)" /> 方法所傳回的 <see cref="T:System.IAsyncResult" /> 介面。</param>
+      <param name="tableName">要從伺服器下載的資料表名稱。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.OnStartTableUpload">
+      <summary>事件之使用者定義的委派，此委派會在開始將資料表變更上傳至伺服器時引發。</summary>
+      <param name="ar">BeginSynchronize 方法傳回的 <see cref="T:System.IAsyncResult" /> 介面。</param>
+      <param name="tableName">要上傳給伺服器的資料表名稱。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.OnSynchronization">
+      <summary>使用者定義的委派，負責把調和過程中持續發出的同步事件消耗掉。</summary>
+      <param name="ar">BeginSynchronize 方法傳回的 <see cref="T:System.IAsyncResult" /> 介面。</param>
+      <param name="percentComplete">調和過程傳回的值，代表調和過程所完成的複寫百分比。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.PurgeType">
+      <summary>指定使用 <see cref="T:System.Data.SqlServerCe.SqlCeChangeTracking" /> 類別的 <see cref="M:System.Data.SqlServerCe.SqlCeChangeTracking.PurgeTombstoneTableData(System.String,System.Data.SqlServerCe.PurgeType,System.Int64)" /> 方法或 <see cref="M:System.Data.SqlServerCe.SqlCeChangeTracking.PurgeTransactionSequenceData(System.Data.SqlServerCe.PurgeType,System.Int64)" /> 方法時要用來清除中繼資料的準則。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.PurgeType.None">
+      <summary>這個值是保留給追蹤基礎結構使用。請勿將它用於程式碼中。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.PurgeType.TimeBased">
+      <summary>指定要根據中繼資料是否超過指定的天數，刪除中繼資料。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.PurgeType.CsnBased">
+      <summary>指定要根據修改中繼資料之最後一筆交易的認可序號 (CSN)，刪除中繼資料。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.PurgeType.Max">
+      <summary>這個值是保留給追蹤基礎結構使用。請勿將它用於程式碼中。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.RdaBatchOption">
+      <summary>指定與 <see cref="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.Push(System.String,System.String)" /> 相關聯的資料列是否應該批次處理成單一交易。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RdaBatchOption.BatchingOff">
+      <summary>指示 SQL Server Compact 不會批次處理發送到 SQL Server 的資料列。伺服器會個別處理每一個資料列。這是預設值。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RdaBatchOption.BatchingOn">
+      <summary>指示 SQL Server Compact 會將發送到 SQL Server 的資料列批次處理成單一交易。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.RdaTrackOption">
+      <summary>指定是否追蹤要提取至裝置的資料表。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RdaTrackOption.TrackingOff">
+      <summary>指示 SQL Server Compact 不會追蹤提取之資料表所做的變更。不會於本機建立任何 PRIMARY KEY 條件約束。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RdaTrackOption.TrackingOn">
+      <summary>指示 SQL Server Compact 會追蹤提取之資料表所做的變更。在本機資料表上會建立與 <paramref name="sqlSelectString" /> 指定值相關的 PRIMARY KEY 條件約束。這是預設值。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RdaTrackOption.TrackingOnWithIndexes">
+      <summary>指示 SQL Server Compact 會追蹤提取之資料表所做的變更。本機資料表上會建立存在於 <paramref name="sqlSelectString" /> 所指定之 SQL Server 資料表的索引與 PRIMARY KEY 條件約束。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RdaTrackOption.TrackingOffWithIndexes">
+      <summary>指示 SQL Server Compact 不會追蹤提取之資料表所做的變更。本機資料表上會建立存在於 <paramref name="sqlSelectString" /> 所指定之 SQL Server 資料表的索引與 PRIMARY KEY 條件約束。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.RepairOption">
+      <summary>傳遞給 <see cref="M:System.Data.SqlServerCe.SqlCeEngine.Repair(System.String,System.Data.SqlServerCe.RepairOption)" /> 方法時，<see cref="T:System.Data.SqlServerCe.RepairOption" /> 會指定要執行的資料修復類型。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RepairOption.DeleteCorruptedRows">
+      <summary>將所有毀損的資料列全部刪除，不需要嘗試修復。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RepairOption.RecoverCorruptedRows">
+      <summary>嘗試修復所有損毀的資料列，而非刪除它們。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RepairOption.RecoverAllPossibleRows">
+      <summary>修復所有可修復的損毀資料列。無法修復的資料列會維持未修改狀態。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.RepairOption.RecoverAllOrFail">
+      <summary>嘗試修復所有損毀的資料列。如果其中一個資料列無法修復，就不會修改任何資料列，而且作業會失敗。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.ResultSetEnumerator">
+      <summary>可用來逐一查看 ResultSet 物件中記錄集合的列舉值。<see cref="T:System.Data.SqlServerCe.ResultSetEnumerator" /> 不適合從程式碼當中直接使用。直接使用 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 物件將取得更多功能。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.ResultSetEnumerator.#ctor(System.Data.SqlServerCe.SqlCeResultSet)">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.ResultSetEnumerator" /> 類別的新執行個體。</summary>
+      <param name="resultSet">
+        <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 物件，包含要列舉的記錄。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.ResultSetEnumerator.Current">
+      <summary>目前在 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 中的記錄。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.ResultSetEnumerator.MoveNext">
+      <summary>移到 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 中的下一個記錄。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.ResultSetEnumerator.Reset">
+      <summary>將資料指標置於 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 中的第一個記錄之前。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.ResultSetEnumerator.System#Collections#IEnumerator#Current"></member>
+    <member name="T:System.Data.SqlServerCe.ResultSetOptions">
+      <summary>設定 <see cref="M:System.Data.SqlServerCe.ResultSetEnumerator.#ctor(System.Data.SqlServerCe.SqlCeResultSet)" /> 的選項。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ResultSetOptions.None">
+      <summary>未指定任何 ResultSet 選項。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ResultSetOptions.Updatable">
+      <summary>ResultSet 允許更新。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ResultSetOptions.Scrollable">
+      <summary>ResultSet 可以前後捲動。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ResultSetOptions.Sensitive">
+      <summary>ResultSet 會偵測對資料來源所做的變更。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ResultSetOptions.Insensitive">
+      <summary>ResultSet 不會偵測對資料來源所做的變更。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.ResultSetSensitivity">
+      <summary>設定 <see cref="M:System.Data.SqlServerCe.ResultSetEnumerator.#ctor(System.Data.SqlServerCe.SqlCeResultSet)" /> 的敏感度。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ResultSetSensitivity.Asensitive">
+      <summary>ResultSet 不設定敏感值。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ResultSetSensitivity.Insensitive">
+      <summary>ResultSet 不會偵測對資料來源所做的變更。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ResultSetSensitivity.Sensitive">
+      <summary>ResultSet 會偵測對資料來源所做的變更。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.ResultSetView">
+      <summary>實作資料繫結介面，並提供使用者介面控制項與 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 之間的橋樑。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.Columns">
+      <summary>根據即將繫結到特定控制項的 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 中的資料行名稱，來取得或設定資料行。</summary>
+    </member>
+    <member name="E:System.Data.SqlServerCe.ResultSetView.ListChanged">
+      <summary>當項目加入 <see cref="T:System.Data.SqlServerCe.ResultSetView" />. 內或從其中移除項目時，都會引發這個事件。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.Ordinals">
+      <summary>根據即將繫結到特定控制項的 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 中的序數位置，來取得或設定資料行。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#Collections#ICollection#CopyTo(System.Array,System.Int32)"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#Collections#ICollection#Count"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#Collections#ICollection#IsSynchronized"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#Collections#ICollection#SyncRoot"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#Collections#IEnumerable#GetEnumerator"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#Add(System.Object)"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#Clear"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#Contains(System.Object)"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#IndexOf(System.Object)"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#Insert(System.Int32,System.Object)"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#IsFixedSize"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#IsReadOnly"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#Item(System.Int32)"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#Remove(System.Object)"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#Collections#IList#RemoveAt(System.Int32)"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#AddIndex(System.ComponentModel.PropertyDescriptor)"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#AddNew"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#AllowEdit"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#AllowNew"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#AllowRemove"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#ApplySort(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#Find(System.ComponentModel.PropertyDescriptor,System.Object)"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#IsSorted"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#RemoveIndex(System.ComponentModel.PropertyDescriptor)"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#RemoveSort"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#SortDirection"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#SortProperty"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#SupportsChangeNotification"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#SupportsSearching"></member>
+    <member name="P:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#IBindingList#SupportsSorting"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#ITypedList#GetItemProperties(System.ComponentModel.PropertyDescriptor[])"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#ComponentModel#ITypedList#GetListName(System.ComponentModel.PropertyDescriptor[])"></member>
+    <member name="M:System.Data.SqlServerCe.ResultSetView.System#IDisposable#Dispose"></member>
+    <member name="T:System.Data.SqlServerCe.RowView"></member>
+    <member name="M:System.Data.SqlServerCe.RowView.Dispose"></member>
+    <member name="M:System.Data.SqlServerCe.RowView.Equals(System.Object)"></member>
+    <member name="M:System.Data.SqlServerCe.RowView.GetHashCode"></member>
+    <member name="P:System.Data.SqlServerCe.RowView.System#ComponentModel#IDataErrorInfo#Error"></member>
+    <member name="P:System.Data.SqlServerCe.RowView.System#ComponentModel#IDataErrorInfo#Item(System.String)"></member>
+    <member name="M:System.Data.SqlServerCe.RowView.System#ComponentModel#IEditableObject#BeginEdit"></member>
+    <member name="M:System.Data.SqlServerCe.RowView.System#ComponentModel#IEditableObject#CancelEdit"></member>
+    <member name="M:System.Data.SqlServerCe.RowView.System#ComponentModel#IEditableObject#EndEdit"></member>
+    <member name="P:System.Data.SqlServerCe.RowView.UpdatableRecord"></member>
+    <member name="T:System.Data.SqlServerCe.SecurityType">
+      <summary>指定在複寫期間，連接到「發行者」或「散發者」時要使用的安全性模式。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.SecurityType.DBAuthentication">
+      <summary>在複寫期間連接到「發行者」或「散發者」時，使用 SQL Server 驗證。這是預設值。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.SecurityType.NTAuthentication">
+      <summary>在複寫期間連接到發行者或散發者時，使用整合式 Windows 驗證。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SnapshotTransferType">
+      <summary>控制快照檔案如何從散發者傳輸到執行 IIS 的電腦。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.SnapshotTransferType.UNC">
+      <summary>將從伺服器上的通用命名慣例 (Universal Naming Convention，UNC) 共用傳輸快照檔案。這是預設值。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.SnapshotTransferType.FTP">
+      <summary>將透過 FTP 通訊協定傳輸快照檔案。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeChangeTracking">
+      <summary>[安全性關鍵]提供可用來針對 SQL Server Compact 資料庫中資料表追蹤變更的方法。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.#ctor(System.Data.SqlServerCe.SqlCeConnection)">
+      <summary>[安全性關鍵]使用 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 來初始化 <see cref="T:System.Data.SqlServerCe.SqlCeChangeTracking" /> 類別的新執行個體。 </summary>
+      <param name="connection">
+        <see cref="T:System.Data.SqlServerCe.SqlCeConnection" />，代表與資料來源的連接。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.#ctor(System.Data.SqlServerCe.SqlCeTransaction)">
+      <summary>[安全性關鍵]使用 <see cref="T:System.Data.SqlServerCe.SqlCeTransaction" /> 來初始化 <see cref="T:System.Data.SqlServerCe.SqlCeChangeTracking" /> 類別的新執行個體。 </summary>
+      <param name="transaction">
+        <see cref="T:System.Data.SqlServerCe.SqlCeTransaction" />，代表變更追蹤執行所在的交易。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.DisableTracking(System.String)">
+      <summary>[安全性關鍵]停用指定之資料表的追蹤。</summary>
+      <param name="tableName">要停用變更追蹤的資料表名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.Dispose">
+      <summary>[安全性關鍵]釋放 <see cref="T:System.Data.SqlServerCe.SqlCeChangeTracking" /> 類別之目前執行個體所使用的所有資源。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.Dispose(System.Boolean)">
+      <summary>[安全性關鍵]釋放 <see cref="T:System.Data.SqlServerCe.SqlCeChangeTracking" /> 類別所使用的 Unmanaged 資源，並且選擇性地釋放 Managed 資源。</summary>
+      <param name="disposing">true 表示要同時釋放 Managed 和 Unmanaged 資源，false 則表示僅釋放 Unmanaged 資源。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.EnableTracking(System.String,System.Data.SqlServerCe.TrackingKeyType,System.Data.SqlServerCe.TrackingOptions)">
+      <summary>[安全性關鍵]啟用指定之資料表的追蹤。</summary>
+      <param name="tableName">要啟用追蹤的資料表名稱。</param>
+      <param name="trackingKeyType">
+        <see cref="T:System.Data.SqlServerCe.TrackingKeyType" /> 的其中一個值，這個值會指定要用於追蹤資料的資料列索引鍵。此資料列索引鍵可向追蹤系統唯一識別資料表資料列，而且它可以是資料表的主索引鍵或是已套用 ROWGUIDCOL 屬性之 uniqueidentifier 類型的資料行。</param>
+      <param name="trackingOptions">位元組合 <see cref="T:System.Data.SqlServerCe.TrackingOptions" /> 值，這個值會指定要在資料表上追蹤的資料庫作業。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.GetLastCommittedCsn">
+      <summary>[安全性關鍵]傳回針對與 <see cref="T:System.Data.SqlServerCe.SqlCeChangeTracking" /> 物件相關聯之資料來源認可的最後一筆交易的認可序號 (CSN)。</summary>
+      <returns>資料來源的 CSN。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.GetTrackingOptions(System.String,System.Data.SqlServerCe.TrackingOptions@)">
+      <summary>[安全性關鍵]取得值，這個值表示目前正在指定之資料表上追蹤的資料庫作業。</summary>
+      <returns>如果目前正在追蹤此資料表 (已啟用追蹤)，則為 true，否則為 false。</returns>
+      <param name="tableName">要擷取目前正在追蹤之作業的資料表名稱。</param>
+      <param name="trackingOptions">當這個方法傳回時，就會包含 <see cref="T:System.Data.SqlServerCe.TrackingOptions" /> 值的位元組合，表示目前正在追蹤的作業。此參數傳遞時未初始化。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.PackTombstoneKey(System.String,System.Object[])">
+      <summary>[安全性關鍵]將指定之資料表中的資料列索引鍵轉換成標記資料表中資料列索引鍵所使用的格式。</summary>
+      <returns>位元組陣列，這個陣列代表標記資料表中資料列索引鍵的值。</returns>
+      <param name="tableName">包含此資料列的資料表名稱。</param>
+      <param name="columnValues">包含資料列索引鍵之資料行值的陣列。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.PurgeTombstoneTableData(System.String,System.Data.SqlServerCe.PurgeType,System.Int64)">
+      <summary>[安全性關鍵]針對指定的資料表清除標記資料。</summary>
+      <param name="tableName">要刪除標記資料的資料表名稱。</param>
+      <param name="pType">
+        <see cref="T:System.Data.SqlServerCe.PurgeType" /> 的其中一個值，這個值會指定清除是以時間為基礎，還是根據修改標記資料之最後一筆交易的認可序號 (CSN)。</param>
+      <param name="retentionValue">指定應該保留標記資料列之上限的數字。如果清除是以時間為基礎，此參數就會指定從目前日期開始要保留標記資料的天數。如果清除是以 CSN 為基礎，此參數就會指定應該保留標記資料之最後一筆交易的 CSN。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.PurgeTransactionSequenceData(System.Data.SqlServerCe.PurgeType,System.Int64)">
+      <summary>[安全性關鍵]從交易歷程記錄資料表中清除指定的資料。</summary>
+      <param name="pType">
+        <see cref="T:System.Data.SqlServerCe.PurgeType" /> 的其中一個值，這個值會指定清除是以時間為基礎，還是根據修改交易歷程記錄資料之最後一筆交易的認可序號 (CSN)。</param>
+      <param name="retentionValue">指定應該保留資料列之上限的數字。如果清除是以時間為基礎，此參數就會指定從目前日期開始要保留交易歷程記錄資料的天數。如果清除是以 CSN 為基礎，此參數就會指定應該保留交易歷程記錄資料之最後一筆交易的 CSN。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.UnpackTombstoneKey(System.String,System.Byte[])">
+      <summary>[安全性關鍵]將用於標記資料表之資料列索引鍵的表示法轉換成用於指定資料表之資料列索引鍵的資料行值。</summary>
+      <returns>物件陣列，這個陣列包含用於資料表之資料列索引鍵的資料行值。</returns>
+      <param name="tableName">資料表的名稱。</param>
+      <param name="tombstoneKey">位元組陣列，這個陣列代表標記資料表中資料列索引鍵的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeChangeTracking.UpgradePublicTracking(System.String)">
+      <summary>[安全性關鍵]在已經啟用追蹤的 SQL Server Compact SP2 資料庫中升級追蹤中繼資料，以供 Microsoft Sync Framework Service Pack 1 (SP1) 和 Sync Framework 的更新版本使用。</summary>
+      <returns>如果已成功升級此資料庫，或者目前沒有追蹤此資料庫，則為 true，否則為 false。</returns>
+      <param name="connectionString">資料來源的連接字串。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeCommand">
+      <summary>表示要針對資料來源執行的 SQL 陳述式。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.#ctor">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.#ctor(System.String)">
+      <summary>使用查詢的文字初始化 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 類別的新執行個體。</summary>
+      <param name="commandText">查詢的文字。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.#ctor(System.String,System.Data.SqlServerCe.SqlCeConnection)">
+      <summary>使用查詢的文字和 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 初始化 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 類別的新執行個體。</summary>
+      <param name="commandText">查詢的文字。</param>
+      <param name="connection">
+        <see cref="T:System.Data.SqlServerCe.SqlCeConnection" />，代表與資料來源的連接。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.#ctor(System.String,System.Data.SqlServerCe.SqlCeConnection,System.Data.SqlServerCe.SqlCeTransaction)">
+      <summary>使用查詢的文字、<see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 和 <see cref="T:System.Data.SqlServerCe.SqlCeTransaction" /> 初始化 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 類別的新執行個體。</summary>
+      <param name="commandText">查詢的文字。</param>
+      <param name="connection">
+        <see cref="T:System.Data.SqlServerCe.SqlCeConnection" />，代表與資料來源的連接。</param>
+      <param name="transaction">
+        <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 在其中執行的交易。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.Cancel">
+      <summary>嘗試取消 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 的執行。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommand.CommandText">
+      <summary>取得或設定要在資料來源執行的 SQL 陳述式。</summary>
+      <returns>要執行的 SQL 陳述式或要開啟之基底資料表的名稱。預設值為空字串。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommand.CommandTimeout">
+      <summary>取得或設定結束嘗試執行命令並產生錯誤之前的等候時間。</summary>
+      <returns>SQL Server Compact 一定是零 (0)。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommand.CommandType">
+      <summary>取得或設定代表如何解譯 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.CommandText" /> 屬性的值。</summary>
+      <returns>其中一個 <see cref="T:System.Data.CommandType" /> 值。預設值為 <see cref="F:System.Data.CommandType.Text" />。</returns>
+      <exception cref="T:System.ArgumentException">值並非有效的 <see cref="T:System.Data.CommandType" />。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommand.Connection">
+      <summary>取得或設定由 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 的這個執行個體所使用的 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" />。</summary>
+      <returns>資料來源的連接。預設值為 null。</returns>
+      <exception cref="T:System.InvalidOperationException">當交易正在進行中時，<see cref="P:System.Data.SqlServerCe.SqlCeCommand.Connection" /> 屬性會變更。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.CreateParameter">
+      <summary>建立 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件的新執行個體。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommand.DesignTimeVisible">
+      <summary>Get 會永遠傳回 false，Set 則永遠擲回 <see cref="T:System.NotSupportedException" />。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.ExecuteNonQuery">
+      <summary>針對 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 執行 SQL 陳述式，並傳回受影響的資料列數。</summary>
+      <returns>受影響的資料列數目。</returns>
+      <exception cref="T:System.InvalidOperationException">連接不存在。-或-連接尚未開啟。-或-如果某項交易內容與原本連接登記的內容不同，便無法在那個交易內容中執行命令。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.ExecuteReader">
+      <summary>將 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.CommandText" /> 傳送到 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.Connection" />，並建立 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 物件。</returns>
+      <exception cref="T:System.InvalidOperationException">如果某項交易內容與原本連接登記的內容不同，便無法在那個交易內容中執行命令。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.ExecuteReader(System.Data.CommandBehavior)">
+      <summary>藉由使用其中一個 <see cref="T:System.Data.CommandBehavior" /> 值，將 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.CommandText" /> 傳送到 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.Connection" /> 並建立 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 物件。</returns>
+      <param name="behavior">其中一個 <see cref="T:System.Data.CommandBehavior" /> 值。</param>
+      <exception cref="T:System.InvalidOperationException">如果某項交易內容與原本連接登記的內容不同，便無法在那個交易內容中執行命令。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.ExecuteResultSet(System.Data.SqlServerCe.ResultSetOptions)">
+      <summary>將 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.CommandText" /> 傳送到 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.Connection" />，並藉由使用 <see cref="T:System.Data.SqlServerCe.ResultSetOptions" /> 建立 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" />。</summary>
+      <param name="options">在建立 ResultSet 時所要使用的 ResultSetOptions。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.ExecuteResultSet(System.Data.SqlServerCe.ResultSetOptions,System.Data.SqlServerCe.SqlCeResultSet)">
+      <summary>將 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.CommandText" /> 傳送到 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.Connection" />，並藉由使用 <see cref="T:System.Data.SqlServerCe.ResultSetOptions" /> 建立 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" />。</summary>
+      <param name="options">在建立 ResultSet 時所要使用的 ResultSetOptions。</param>
+      <param name="resultSet">要建立的 ResultSet。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.ExecuteScalar">
+      <summary>執行查詢，並傳回查詢所傳回的結果集中第一個資料列的第一個資料行。會忽略額外的資料行或資料列。</summary>
+      <returns>結果集中第一個資料列的第一個資料行。</returns>
+      <exception cref="T:System.InvalidOperationException">如果某項交易內容與原本連接登記的內容不同，便無法在那個交易內容中執行命令。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommand.IndexName">
+      <summary>指定要開啟的索引。</summary>
+      <returns>要開啟的索引名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommand.Parameters">
+      <summary>取得 <see cref="T:System.Data.SqlServerCe.SqlCeParameterCollection" />。</summary>
+      <returns>SQL 陳述式的參數。預設值為空集合。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.Prepare">
+      <summary>會在資料來源上建立命令的備製 (或已編譯的) 版本。</summary>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.Data.SqlServerCe.SqlCeCommand.Connection" /> 尚未設定。-或-<see cref="P:System.Data.SqlServerCe.SqlCeCommand.Connection" /> 並非 <see cref="M:System.Data.SqlServerCe.SqlCeConnection.Open" />。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.SetRange(System.Data.SqlServerCe.DbRangeOptions,System.Object[],System.Object[])">
+      <summary>限制將由 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 所讀取的資料列集合。</summary>
+      <param name="dbRangeOptions">指定範圍時所使用的選項。</param>
+      <param name="startData">範圍的起始關鍵值。</param>
+      <param name="endData">範圍的結束關鍵值。</param>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="P:System.Data.SqlServerCe.SqlCeCommand.IndexName" /> 屬性尚未設定。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommand.System#ICloneable#Clone"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommand.Transaction">
+      <summary>取得或設定在其中執行 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 的交易。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeTransaction" />。預設值為 null。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommand.UpdatedRowSource">
+      <summary>取得或設定當命令結果是由 <see cref="T:System.Data.Common.DbDataAdapter" /> 的 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 方法使用時，如何套用到 <see cref="T:System.Data.DataRow" />。這個屬性不能與 .NET Compact Framework Data Provider for SQL Server Compact 搭配使用。</summary>
+      <returns>其中一個 <see cref="T:System.Data.UpdateRowSource" /> 值。預設值為 Both。如果已自動產生命令，則預設值為 None。</returns>
+      <exception cref="T:System.ArgumentException">輸入的值並非其中一個 <see cref="T:System.Data.UpdateRowSource" /> 值。</exception>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeCommandBuilder">
+      <summary>提供自動產生單一資料表命令的方法，可用來協調對 <see cref="T:System.Data.DataSet" /> 與相關的資料庫所做的變更。這個類別無法被繼承。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommandBuilder.#ctor">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.SqlCeCommandBuilder" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommandBuilder.#ctor(System.Data.SqlServerCe.SqlCeDataAdapter)">
+      <summary>使用相關聯的 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 和 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 物件初始化 <see cref="T:System.Data.SqlServerCe.SqlCeCommandBuilder" /> 類別的新執行個體。</summary>
+      <param name="adapter">
+        <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 的名稱。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommandBuilder.CatalogLocation">
+      <summary>在 SQL Server Compact 中不支援。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommandBuilder.CatalogSeparator">
+      <summary>在 SQL Server Compact 中不支援。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommandBuilder.ConflictOption">
+      <summary>指定要由 <see cref="T:System.Data.SqlServerCe.SqlCeCommandBuilder" /> 使用的 <see cref="T:System.Data.ConflictOption" />。</summary>
+      <returns>
+        <see cref="T:System.Data.ConflictOption" /> 物件。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommandBuilder.DataAdapter">
+      <summary>取得或設定會為其自動產生 SQL 陳述式的 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 物件。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 物件。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommandBuilder.GetDeleteCommand">
+      <summary>當應用程式呼叫 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 上的 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 時取得自動產生的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 物件，需要此物件才能在資料庫上執行刪除。</summary>
+      <returns>自動產生的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 物件，執行刪除時需要此物件。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommandBuilder.GetInsertCommand">
+      <summary>當應用程式呼叫 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 上的 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 時取得自動產生的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 物件，需要此物件才能在資料庫上執行插入。</summary>
+      <returns>自動產生的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 物件，執行插入時需要此物件。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommandBuilder.GetUpdateCommand">
+      <summary>當應用程式呼叫 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 上的 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 時取得自動產生的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 物件，需要此物件才能在資料庫上執行更新。</summary>
+      <returns>自動產生的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 物件，執行更新時需要此物件。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommandBuilder.QuoteIdentifier(System.String)">
+      <summary>傳回指定之識別碼的正確引號格式。</summary>
+      <returns>識別碼的引號格式。</returns>
+      <param name="unquotedIdentifier">要傳回引號格式的識別碼。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="unquotedIdentifier" /> 是 null。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommandBuilder.QuotePrefix">
+      <summary>取得或設定開始字元 (一個或多個)，當指定名稱包含空白或保留 Token 之類字元的 SQL Server 資料庫物件 (如資料表或資料行) 時，就可以使用。</summary>
+      <returns>要使用的開始字元。預設為空字串。</returns>
+      <exception cref="T:System.InvalidOperationException">這個屬性不能在已經產生 INSERT、UPDATE 或 DELETE 命令之後變更。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommandBuilder.QuoteSuffix">
+      <summary>取得或設定結束字元 (一個或多個)，當指定名稱包含空白或保留 Token 之類字元的 SQL Server 資料庫物件 (如資料表或資料行) 時，就可以使用。</summary>
+      <returns>要使用的結束字元。預設為空字串。</returns>
+      <exception cref="T:System.InvalidOperationException">這個屬性不能在已經產生 INSERT、UPDATE 或 DELETE 命令之後變更。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeCommandBuilder.SchemaSeparator">
+      <summary>在 SQL Server Compact 中不支援。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeCommandBuilder.UnquoteIdentifier(System.String)">
+      <summary>傳回指定之識別碼的正確無引號格式。</summary>
+      <returns>移除所有引號的識別碼。</returns>
+      <param name="quotedIdentifier">要傳回無引號格式的識別碼。</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="quotedIdentifier" /> 是 null。</exception>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeConnection">
+      <summary>表示 SQL Server Compact 資料來源的開啟連接。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.#ctor">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.#ctor(System.String)">
+      <summary>使用指定的連接字串初始化 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 類別的新執行個體。</summary>
+      <param name="connectionString">用來開啟資料庫的連接。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.BeginTransaction">
+      <summary>開始資料庫交易。</summary>
+      <returns>表示新交易的物件。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.BeginTransaction(System.Data.IsolationLevel)">
+      <summary>使用目前的 <see cref="T:System.Data.IsolationLevel" /> 值來開始資料庫的交易。</summary>
+      <returns>表示新交易的物件。</returns>
+      <param name="isolationLevel">這個連接的交易隔離等級。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.ChangeDatabase(System.String)">
+      <summary>為開啟的 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 變更目前的資料庫。</summary>
+      <param name="value">資料庫名稱。</param>
+      <exception cref="T:System.ArgumentException">資料庫名稱無效。</exception>
+      <exception cref="T:System.InvalidOperationException">連接尚未開啟。</exception>
+      <exception cref="T:System.Data.SqlServerCe.SqlCeException">無法變更資料庫。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.Close">
+      <summary>關閉資料來源的連接。這是關閉任何開啟連接的慣用方法。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnection.ConnectionString">
+      <summary>取得或設定用來開啟資料庫的字串。</summary>
+      <returns>.NET Compact Framework Data Provider for SQL Server Compact 連接字串，其中包含資料來源名稱和建立初始連接所需的其他參數。預設值為空字串。</returns>
+      <exception cref="T:System.ArgumentException">提供無效的連接字串引數。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnection.ConnectionTimeout">
+      <summary>取得在終止嘗試並產生錯誤前嘗試建立連接的等待時間。</summary>
+      <returns>等待連接開啟的時間 (以秒為單位)。這個值在 SQL Server Compact 中一定是 0。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.CreateCommand">
+      <summary>建立並傳回與 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 相關聯的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 物件。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 物件。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnection.Database">
+      <summary>取得目前資料庫或一旦連接開啟時要使用之資料庫的名稱。</summary>
+      <returns>目前資料庫的名稱或一旦連接開啟時要使用之資料庫的名稱。預設值為空字串。對於 SQL Server Compact 而言，這個屬性的值應該是資料庫檔案的完整路徑；例如 「\myApp\myDB.sdf」。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnection.DatabaseIdentifier">
+      <summary>同步處理時取得目前資料庫的唯一識別項。</summary>
+      <returns>目前資料庫的唯一識別項。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnection.DataSource">
+      <summary>取得資料來源的檔案名稱。</summary>
+      <returns>資料來源的位置和檔案名稱。預設值為空字串。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.Dispose">
+      <summary>釋放 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 類別之目前執行個體所使用的所有資源。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.EnlistTransaction(System.Transactions.Transaction)">
+      <summary>編列於指定的 <see cref="T:System.Transactions.Transaction" /> 中。</summary>
+      <param name="SysTrans">您想要編列的交易</param>
+      <exception cref="T:System.InvalidOperationException">連接已經編列於本機交易中。-或-連接無法編列於交易中。</exception>
+      <exception cref="T:System.NullReferenceException">
+        <paramref name="SysTrans" /> 是 null。</exception>
+    </member>
+    <member name="E:System.Data.SqlServerCe.SqlCeConnection.FlushFailure">
+      <summary>發生於背景清除失敗時。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.GetDatabaseInfo">
+      <summary>傳回索引鍵值組，其中含有連接之資料庫的地區設定、加密模式及區分大小寫設定的相關資訊。</summary>
+      <returns>地區設定、加密模式之區分大小寫之名稱值組的排序清單。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.GetSchema">
+      <summary>傳回這個 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 的資料來源結構描述資訊。</summary>
+      <returns>包含結構描述資訊的 <see cref="T:System.Data.DataTable" />。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.GetSchema(System.String)">
+      <summary>使用結構描述名稱的指定字串，傳回這個 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 的資料來源結構描述資訊。</summary>
+      <returns>包含結構描述資訊的 <see cref="T:System.Data.DataTable" />。</returns>
+      <param name="collectionName">結構描述名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.GetSchema(System.String,System.String[])">
+      <summary>使用結構描述名稱的指定字串和限制值的指定字串陣列，傳回這個 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 的資料來源結構描述資訊。</summary>
+      <returns>包含結構描述資訊的 <see cref="T:System.Data.DataTable" />。</returns>
+      <param name="collectionName">結構描述名稱。</param>
+      <param name="restrictionValues">限制值的集合。</param>
+    </member>
+    <member name="E:System.Data.SqlServerCe.SqlCeConnection.InfoMessage">
+      <summary>發生於 .NET Compact Framework Data Provider for SQL Server 傳送警告或參考用訊息時。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnection.Open">
+      <summary>開啟資料庫連接，且其屬性設定是由 <see cref="P:System.Data.SqlServerCe.SqlCeConnection.ConnectionString" /> 指定。</summary>
+      <exception cref="T:System.InvalidOperationException">連接已經開啟。</exception>
+      <exception cref="T:System.Data.SqlServerCe.SqlCeException">當開啟連接時發生的連接層級錯誤。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnection.ServerVersion">
+      <summary>以字串形式傳回資料庫版本編號。</summary>
+      <returns>SQL Server Compact 版本的字串。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnection.State">
+      <summary>取得連接的目前狀態。</summary>
+      <returns>
+        <see cref="T:System.Data.ConnectionState" /> 值的位元組合。預設值為 Closed。</returns>
+    </member>
+    <member name="E:System.Data.SqlServerCe.SqlCeConnection.StateChange">
+      <summary>發生於連接的狀態變更時。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder">
+      <summary>提供建立及管理 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 類別所用之連接字串內容的簡單方式。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.#ctor">
+      <summary>使用預設值，初始化 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.#ctor(System.String)">
+      <summary>使用提供執行個體內部連接資訊資料的指定連接字串，初始化 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 類別的新執行個體。</summary>
+      <param name="connectionString">連接字串。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.AutoshrinkThreshold">
+      <summary>取得或設定在開始自動壓縮之前，資料庫檔案中允許的可用空間百分比。</summary>
+      <returns>值 100 會停用自動壓縮。如果未指定，則預設值為 60。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.CaseSensitive">
+      <summary>取得或設定值，這個值表示資料庫定序是否區分大小寫。</summary>
+      <returns>如果資料庫區分大小寫，則為 true，否則為 false。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.Clear">
+      <summary>清除 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 執行個體的內容。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.ContainsKey(System.String)">
+      <summary>判斷 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 是否包含特定索引鍵。</summary>
+      <returns>如果 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 包含有指定索引鍵的項目，則為 true，否則為 false。</returns>
+      <param name="keyword">要在 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 中尋找的索引鍵。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.DataSource">
+      <summary>取得或設定 SQL Server Compact 資料庫的檔案路徑和名稱。</summary>
+      <returns>SQL Server Compact 資料庫的檔案路徑和名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.DefaultLockEscalation">
+      <summary>取得或設定嘗試從資料列擴大為頁面，或從頁面擴大為資料表之前，交易將取得的鎖定數目。</summary>
+      <returns>嘗試從資料列擴大為頁面，或從頁面擴大為資料表之前，交易將取得的鎖定數目。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.DefaultLockTimeout">
+      <summary>取得或設定交易等候鎖定的預設毫秒數。</summary>
+      <returns>交易等候鎖定的毫秒數。如果未指定，則預設值為 2000。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.Encrypt">
+      <summary>取得或設定值，這個值表示資料庫是否加密。</summary>
+      <returns>如果資料庫已加密，則為 true，否則為 false。若要啟用加密，必須設定為 true，或設定為 false 則不加密。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.EncryptionMode">
+      <summary>取得或設定建立資料庫時所依據的加密模式。</summary>
+      <returns>建立資料庫時所依據的加密模式。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.Enlist">
+      <summary>取得或設定值，這個值表示連接資料庫是否透過使用 Enlist 所開啟。</summary>
+      <returns>如果連接資料庫是透過使用 Enlist 所開啟，則為 true，否則為 false。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.FileMode">
+      <summary>取得或設定開啟資料庫檔案時使用的模式。</summary>
+      <returns>開啟資料庫檔案時使用的模式值。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.FlushInterval">
+      <summary>取得或設定在所有認可的交易都排清到磁碟之前，指定的間隔時間 (以秒為單位)。</summary>
+      <returns>指定的間隔時間 (以秒為單位)。如果未指定，則預設值為 10。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.InitialLcid">
+      <summary>取得或設定搭配資料庫使用的地區設定識別碼 (LCID)。</summary>
+      <returns>地區設定識別碼 (LCID) 的值。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.IsFixedSize">
+      <summary>取得值，這個值表示 SqlCeConnectionStringBuilder 是否有固定大小。</summary>
+      <returns>如果 SqlCeConnectionStringBuilder 有固定大小，則為 true，否則為 false。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.Item(System.String)">
+      <summary>取得或設定與指定之索引鍵相關聯的值。</summary>
+      <returns>與指定之索引鍵相關聯的值。</returns>
+      <param name="keyword">要取得或設定之項目的索引鍵。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.Keys">
+      <summary>取得包含 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 中之索引鍵的 ICollection。</summary>
+      <returns>包含 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 中之索引鍵的 ICollection。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.MaxBufferSize">
+      <summary>取得或設定 SQL Server Mobile 在開始將變更排清到磁碟之前，可以使用的最大記憶體數量 (以 KB 為單位)。</summary>
+      <returns>最大記憶體數量 (以 KB 為單位)。如果未指定，則預設值為 640。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.MaxDatabaseSize">
+      <summary>取得或設定資料庫大小上限 (以 MB 為單位)。</summary>
+      <returns>資料庫大小的最大值 (以 MB 為單位)。預設值為 128。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.Password">
+      <summary>取得或設定資料庫密碼，長度最多為 40 個字元。</summary>
+      <returns>資料庫密碼的值。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.PersistSecurityInfo">
+      <summary>取得或設定值，這個值表示是否不會傳回安全性敏感資訊 (如密碼) 做為連接的一部分。</summary>
+      <returns>如果傳回安全性敏感資訊做為連接的一部分，則為 true，否則為 false。預設值為 false。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.Remove(System.String)">
+      <summary>從 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 執行個體移除具有指定索引鍵的項目。</summary>
+      <returns>如果索引鍵存在於連接字串中且已移除則為 true，如果索引鍵不存在則為 false。</returns>
+      <param name="keyword">要從這個 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 中的連接字串移除之索引鍵/值組的索引鍵。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.ShouldSerialize(System.String)">
+      <summary>表示指定的索引鍵是否存在於這個 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 執行個體中。</summary>
+      <returns>如果 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 包含具有指定索引鍵的項目，則為 true，否則為 false。</returns>
+      <param name="keyword">要在 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 中尋找的索引鍵。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.TempFileMaxSize">
+      <summary>取得或設定暫存資料庫檔案的最大大小 (以 MB 為單位)。</summary>
+      <returns>暫存資料庫檔案的最大大小 (以 MB 為單位)。預設值為 128。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.TempFilePath">
+      <summary>取得或設定暫存資料庫的位置。</summary>
+      <returns>暫存資料庫的位置。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.TryGetValue(System.String,System.Object@)">
+      <summary>從這個 <see cref="T:System.Data.SqlServerCe.SqlCeconnectionStringBuilder" /> 擷取對應於所提供之索引鍵的值。</summary>
+      <returns>如果在連接字串內找到關鍵字，則為 true，否則為 false。</returns>
+      <param name="keyword">要擷取之項目的索引鍵。</param>
+      <param name="value">對應於關鍵字的值。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeConnectionStringBuilder.Values">
+      <summary>取得包含 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 中之值的 ICollection。</summary>
+      <returns>包含 <see cref="T:System.Data.SqlServerCe.SqlCeConnectionStringBuilder" /> 中之值的 ICollection。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeDataAdapter">
+      <summary>表示資料命令集和資料庫連接，這些是用於填入 <see cref="T:System.Data.DataSet" /> 並更新資料來源。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataAdapter.#ctor">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataAdapter.#ctor(System.Data.SqlServerCe.SqlCeCommand)">
+      <summary>使用指定的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 做為 <see cref="P:System.Data.SqlServerCe.SqlCeDataAdapter.SelectCommand" /> 屬性以初始化 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 類別的新執行個體。</summary>
+      <param name="selectCommand">是 SELECT 陳述式的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />。這個 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 會設定為 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 的 <see cref="P:System.Data.SqlServerCe.SqlCeDataAdapter.SelectCommand" /> 屬性。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataAdapter.#ctor(System.String,System.Data.SqlServerCe.SqlCeConnection)">
+      <summary>使用 <see cref="P:System.Data.SqlServerCe.SqlCeDataAdapter.SelectCommand" /> 和 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 物件初始化 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 類別的新執行個體。</summary>
+      <param name="selectCommandText">是 SQL SELECT 陳述式的 <see cref="T:System.String" />，用來當做 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 的 <see cref="P:System.Data.SqlServerCe.SqlCeDataAdapter.SelectCommand" /> 屬性的 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.CommandText" />。</param>
+      <param name="selectConnection">代表連接的 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" />。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataAdapter.#ctor(System.String,System.String)">
+      <summary>使用 <see cref="P:System.Data.SqlServerCe.SqlCeDataAdapter.SelectCommand" /> 和連接字串以初始化 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 類別的新執行個體。</summary>
+      <param name="selectCommandText">是 SQL SELECT 陳述式的 <see cref="T:System.String" />，用來當做 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 的 <see cref="P:System.Data.SqlServerCe.SqlCeDataAdapter.SelectCommand" /> 屬性的 <see cref="P:System.Data.SqlServerCe.SqlCeCommand.CommandText" />。</param>
+      <param name="selectConnectionString">連接字串。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataAdapter.DeleteCommand">
+      <summary>取得或設定 SQL 陳述式從資料集刪除資料錄。</summary>
+      <returns>用於 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 期間的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />，可刪除資料來源中與 <see cref="T:System.Data.DataSet" /> 中的已刪除資料列相對應的資料錄。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataAdapter.Dispose">
+      <summary>處置目前執行個體。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataAdapter.InsertCommand">
+      <summary>取得或設定用於將新資料錄插入至資料來源的 SQL 陳述式。</summary>
+      <returns>用於 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 期間的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />，可在資料來源中插入與 <see cref="T:System.Data.DataSet" /> 中的新資料列相對應的資料錄。</returns>
+    </member>
+    <member name="E:System.Data.SqlServerCe.SqlCeDataAdapter.RowUpdated">
+      <summary>發生在呼叫 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 的期間，針對資料來源執行更新命令之後。嘗試進行更新，因而引發這個事件。</summary>
+    </member>
+    <member name="E:System.Data.SqlServerCe.SqlCeDataAdapter.RowUpdating">
+      <summary>發生在呼叫 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 的期間，針對資料來源執行更新命令之前。嘗試進行更新，因而引發這個事件。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataAdapter.SelectCommand">
+      <summary>取得或設定用於在資料來源中選取資料錄的 SQL 陳述式。</summary>
+      <returns>用於 <see cref="M:System.Data.Common.DbDataAdapter.Fill(System.Data.DataTable)" /> 期間的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />，可從資料來源選取資料錄放入 <see cref="T:System.Data.DataSet" />。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataAdapter.System#ICloneable#Clone">
+      <summary>如需此成員的描述，請參閱＜<see cref="M:System.ICloneable.Clone" />＞。</summary>
+      <returns>傳回 <see cref="T:System.Object" />。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataAdapter.UpdateCommand">
+      <summary>取得或設定用於在資料來源中更新資料錄的 SQL 陳述式。</summary>
+      <returns>用於 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 期間的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />，可更新資料來源中與 <see cref="T:System.Data.DataSet" /> 中的已修改資料列相對應的資料錄。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeDataReader">
+      <summary>提供自資料來源讀取資料列之順向 (Forward-Only) 資料流的方法。這個類別無法被繼承。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.Close">
+      <summary>關閉 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 物件。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataReader.Depth">
+      <summary>取得值，表示目前資料列的巢狀深度。</summary>
+      <returns>目前資料列的巢狀深度。.NET Compact Framework Data Provider for SQL Server Compact 不支援巢狀，而且一定會傳回零。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.Dispose">
+      <summary>釋放此 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 所耗用的資源。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.Dispose(System.Boolean)">
+      <summary>釋放這個 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 所使用的 Unmanaged 資源，並且選擇性地釋放 Managed 資源。</summary>
+      <param name="disposing">指定是否要釋放 Managed 資源。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataReader.FieldCount">
+      <summary>取得查詢之 SELECT 子句中的資料行數目。</summary>
+      <returns>當未置於有效資料錄集 (Recordset) 中時，則為 0，否則為目前資料錄中的資料行數目。</returns>
+      <exception cref="T:System.InvalidOperationException">沒有對資料來源的目前連接。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.Finalize">
+      <summary>釋放 Unmanaged 資源並執行其他清除作業後，記憶體回收才能重新回收 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" />。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetBoolean(System.Int32)">
+      <summary>取得指定之資料行的值做為布林值 (Boolean)。</summary>
+      <returns>資料行的值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetByte(System.Int32)">
+      <summary>取得指定資料行的值做為位元組。</summary>
+      <returns>指定之資料行的值做為位元組。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+      <summary>從指定的資料行位移 (Offset) 將位元組資料流讀入做為陣列的緩衝區，開始於指定的緩衝區位移。</summary>
+      <returns>讀取的實際位元組數目。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <param name="dataIndex">要開始讀取作業之資料欄位中的來源索引。</param>
+      <param name="buffer">要讀入位元組資料流的目的緩衝區。</param>
+      <param name="bufferIndex">要開始讀取作業的 <paramref name="buffer" /> 索引。</param>
+      <param name="length">要複製到緩衝區的最大長度。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetChar(System.Int32)">
+      <summary>.NET Compact Framework Data Provider for SQL Server Compact 中不支援。</summary>
+      <returns>傳回 <see cref="T:System.Char" />。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+      <summary>從指定的資料行位移將字元的資料流讀入做為陣列的緩衝區，開始於指定的緩衝區位移。</summary>
+      <returns>讀取的實際字元數目。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <param name="dataIndex">要開始讀取作業之資料列中的來源索引。</param>
+      <param name="buffer">要複製資料的目的緩衝區。</param>
+      <param name="bufferIndex">要開始讀取作業的 <paramref name="buffer" /> 索引。</param>
+      <param name="length">要讀取的字元數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetDataTypeName(System.Int32)">
+      <summary>取得來源資料類型的名稱。</summary>
+      <returns>後端資料類型的名稱。</returns>
+      <param name="index">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetDateTime(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.DateTime" /> 物件。</summary>
+      <returns>指定的資料行值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetDecimal(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Decimal" /> 物件。</summary>
+      <returns>指定的資料行值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetDouble(System.Int32)">
+      <summary>取得指定資料行的值做為雙精確度浮點數。</summary>
+      <returns>指定的資料行值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetEnumerator">
+      <returns>傳回 <see cref="T:System.Collections.IEnumerator" />。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetFieldType(System.Int32)">
+      <summary>取得 <see cref="T:System.Type" />，即是物件的資料類型。</summary>
+      <returns>取得 <see cref="T:System.Type" />，即是物件的資料類型。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetFloat(System.Int32)">
+      <summary>取得指定資料行的值做為單精確度浮點數。</summary>
+      <returns>指定的資料行值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetGuid(System.Int32)">
+      <summary>取得指定資料行的值做為全域唯一識別碼 (GUID)。</summary>
+      <returns>指定的資料行值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetInt16(System.Int32)">
+      <summary>取得指定資料行的值做為 16 位元帶正負號的整數。</summary>
+      <returns>指定的資料行值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetInt32(System.Int32)">
+      <summary>取得指定資料行的值做為 32 位元帶正負號的整數。</summary>
+      <returns>指定的資料行值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetInt64(System.Int32)">
+      <summary>取得指定資料行的值做為 64 位元帶正負號的整數。</summary>
+      <returns>指定的資料行值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 Null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetName(System.Int32)">
+      <summary>取得指定之資料行的名稱。</summary>
+      <returns>指定之資料行的名稱。</returns>
+      <param name="index">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetOrdinal(System.String)">
+      <summary>提供資料行的名稱，取得資料行序數。</summary>
+      <returns>以零為基底的資料行序數。</returns>
+      <param name="name">資料行名稱。</param>
+      <exception cref="T:System.IndexOutOfRangeException">指定的名稱不是有效的資料行名稱。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetProviderSpecificFieldType(System.Int32)">
+      <summary>取得 <see cref="T:System.Object" />，其為基礎提供者專屬欄位類型的表示。</summary>
+      <returns>
+        <see cref="T:System.Type" /> 物件，描述指定之資料行的資料類型。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSchemaTable">
+      <summary>傳回 <see cref="T:System.Data.DataTable" />，以描述 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 的資料行中繼資料。</summary>
+      <returns>描述資料行中繼資料的 <see cref="T:System.Data.DataTable" />。</returns>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlBinary(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlBinary" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlBinary" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlBoolean(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlBoolean" />。</summary>
+      <returns>資料行的值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlByte(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlByte" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlByte" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlDateTime(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlDateTime" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlDateTime" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlDecimal(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlDecimal" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlDecimal" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlDouble(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlDouble" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlDouble" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlGuid(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlGuid" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlGuid" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlInt16(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlInt16" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlInt16" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlInt32(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlInt32" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlInt32" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlInt64(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlInt64" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlInt64" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlMoney(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlMoney" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlMoney" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlSingle(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlSingle" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlSingle" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetSqlString(System.Int32)">
+      <summary>取得指定之資料行的值做為 <see cref="T:System.Data.SqlTypes.SqlString" />。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlTypes.SqlString" />。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetString(System.Int32)">
+      <summary>取得指定的資料行值做為字串。</summary>
+      <returns>指定的資料行值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidCastException">指定的轉換無效。</exception>
+      <exception cref="T:System.Data.SqlTypes.SqlNullValueException">此值為 null。</exception>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetValue(System.Int32)">
+      <summary>取得格式為原生之指定序數的資料行值。</summary>
+      <returns>要傳回的值。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.GetValues(System.Object[])">
+      <summary>取得目前資料列中的所有屬性資料行。</summary>
+      <returns>陣列中 <see cref="T:System.Object" /> 的執行個體 (Instance) 數目。</returns>
+      <param name="values">要複製屬性資料行的目的 <see cref="T:System.Object" /> 陣列。</param>
+      <exception cref="T:System.InvalidOperationException">作業無效。<see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 可能位在結果集的最後一個資料列之後。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataReader.HasRows">
+      <summary>取得值，這個值表示 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 是否包含一個或多個資料列。</summary>
+      <returns>
+        <see cref="T:System.Boolean" /> 值。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataReader.HiddenFieldCount">
+      <returns>傳回 <see cref="T:System.Int32" />。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataReader.IsClosed">
+      <summary>指示是否關閉資料讀取器。</summary>
+      <returns>如果 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 已關閉則為 true；否則為 false。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.IsCommandBehavior(System.Data.CommandBehavior)">
+      <summary>決定指定的 <see cref="T:System.Data.CommandBehavior" /> 是否與這個 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 的行為相符。</summary>
+      <returns>如果行為相符則為 true，否則為 false。</returns>
+      <param name="condition">命令行為。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.IsDBNull(System.Int32)">
+      <summary>取得值，表示資料行是否包含不存在或遺漏的值。</summary>
+      <returns>如果指定的資料行值等於 <see cref="T:System.DBNull" /> 則為 true，否則為 false。</returns>
+      <param name="ordinal">以零為基底的資料行序數。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataReader.Item(System.Int32)">
+      <summary>提供資料行序數，取得格式為原生的指定資料行值。</summary>
+      <returns>格式為原生的指定資料行值。</returns>
+      <param name="index">資料行序數。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataReader.Item(System.String)">
+      <summary>提供資料行名稱，取得格式為原生的指定資料行值。</summary>
+      <returns>格式為原生的指定資料行值。</returns>
+      <param name="name">資料行名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.NextResult">
+      <summary>.NET Compact Framework Data Provider for SQL Server Compact 中不支援。</summary>
+      <returns>傳回 <see cref="T:System.Boolean" />。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.OnMove"></member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.Read">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 向前移到下一個資料錄。</summary>
+      <returns>如果有多個資料列則為 true，否則為 false。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeDataReader.RecordsAffected">
+      <summary>取得 SQL 陳述式的執行所變更、插入或刪除的資料列數目。</summary>
+      <returns>變更、插入或刪除的資料列數目，如果沒有任何資料列受影響或陳述式失敗，則為 0，而 SELECT 陳述式則為 -1。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeDataReader.Seek(System.Data.SqlServerCe.DbSeekOptions,System.Object[])">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" /> 放到具有符合指定參數之索引值的資料錄上。</summary>
+      <returns>布林值，true 指示游標已在資料列上。</returns>
+      <param name="dbSeekOptions">要使用的 <see cref="T:System.Data.SqlServerCe.DbSeekOptions" />。</param>
+      <param name="index">資料錄的索引。</param>
+      <exception cref="T:System.Data.SqlServerCe.SqlCeException">找不到值，或發生其他錯誤。</exception>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeEngine">
+      <summary>表示 SQL Server Compact 引擎物件的屬性、方法和其他物件。這個類別無法被繼承。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.#ctor">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.SqlCeEngine" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.#ctor(System.String)">
+      <summary>使用指定的本機連接字串初始化 <see cref="T:System.Data.SqlServerCe.SqlCeEngine" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.Compact(System.String)">
+      <summary>從現有的檔案建立新的資料庫檔案，以回收在 SQL Server Compact 資料庫中浪費的空間。這個方法也用於變更資料庫的定序排序、加密或密碼設定。</summary>
+      <param name="connectionString">目的地資料庫的連接字串。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.CreateDatabase">
+      <summary>建立新的資料庫。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.Dispose">
+      <summary>釋放所有 SQL Server Compact<see cref="T:System.Data.SqlServerCe.SqlCeEngine" /> 資源。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeEngine.LocalConnectionString">
+      <summary>取得或設定 SQL Server Compact 資料庫的連接字串。</summary>
+      <returns>連接字串。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.Repair(System.String,System.Data.SqlServerCe.RepairOption)">
+      <summary>修復損毀的資料庫。</summary>
+      <param name="connectionString">資料庫的區域連接字串。</param>
+      <param name="options">修復資料庫時使用的 RepairOption。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.Shrink">
+      <summary>將空的分頁移至檔案尾端，然後截斷檔案，藉以回收在 SQL Server Compact 資料庫中浪費的空間。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.Upgrade">
+      <summary>將 SQL Server Compact 資料庫的版本從 3.1 升級至 3.5。升級後如果來源資料庫已加密，資料庫將會進行加密。如果來源資料庫未加密，已升級資料庫將會變為未加密。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.Upgrade(System.String)">
+      <summary>將 SQL Server Compact 資料庫的版本從 3.1 升級至 3.5。如果 Destination Connection 字串中未指定加密模式，目標資料庫將會進行加密。如果區分大小寫屬性在連接字串中設定為 true，資料庫定序將會區分大小寫。</summary>
+      <param name="destConnectionString">目的地資料庫的連接字串。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.Verify">
+      <summary>重新計算資料庫中每一頁的總和檢查碼 (Checksum)，並比較新的總和檢查碼和預期的值。</summary>
+      <returns>如果總和檢查碼符合且沒有資料庫損毀則為 true，否則為 false。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeEngine.Verify(System.Data.SqlServerCe.VerifyOption)">
+      <summary>驗證以 VerifyOptio 為基礎的資料庫完整性。</summary>
+      <returns>沒有資料庫損毀則為 true，否則為 false。</returns>
+      <param name="option">決定要使用的資料庫驗證層級。如需可用選項值的詳細資訊，請參閱 <see cref="T:System.Data.SqlServerCe.VerifyOption" />。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeError">
+      <summary>收集與資料來源所傳回警告或錯誤相關的資訊。這個類別無法被繼承。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeError.ErrorParameters">
+      <summary>取得最後三個錯誤參數。SQL Server Compact 會使用錯誤參數來提供與錯誤相關的詳細資料。</summary>
+      <returns>包含最後三個錯誤參數的字串陣列。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeError.HResult">
+      <summary>傳回識別錯誤類型的 HRESULT 值。</summary>
+      <returns>識別錯誤類型的 HR 編號。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeError.Message">
+      <summary>取得描述錯誤的文字。</summary>
+      <returns>描述錯誤的文字。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeError.NativeError">
+      <summary>取得 <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 的原生錯誤數目。如需有關這些錯誤的詳細資訊，請參閱《SQL Server Compact 線上叢書》中＜疑難排解＞一節內的「SQL Server Compact 錯誤」。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 的原生錯誤數目。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeError.NumericErrorParameters">
+      <summary>取得前三個錯誤參數。SQL Server Compact 會使用錯誤參數來提供與錯誤相關的詳細資料。</summary>
+      <returns>包含前三個錯誤參數的整數陣列。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeError.Source">
+      <summary>取得產生錯誤的提供者名稱。</summary>
+      <returns>產生錯誤的提供者名稱。例如，<see cref="P:System.Data.SqlServerCe.SqlCeError.Source" /> 屬性可能會傳回 "OLE DB Provider for SQL Server Compact" 之類的字串。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeError.ToString">
+      <summary>取得錯誤訊息的完整文字。</summary>
+      <returns>錯誤訊息的完整文字。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeErrorCollection">
+      <summary>收集由 .NET Compact Framework Data Provider for SQL Server Compact 所產生的所有錯誤。這個類別無法被繼承。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeErrorCollection.CopyTo(System.Array,System.Int32)">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeErrorCollection" /> 的元素複製到 <see cref="T:System.Array" />，從 <see cref="T:System.Array" /> 內的指定索引起始。</summary>
+      <param name="array">要將元素複製到其中的 <see cref="T:System.Array" />。</param>
+      <param name="index">
+        <paramref name="array" /> 的起始索引。</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="index" /> 的總和以及 <see cref="T:System.Data.SqlServerCe.SqlCeErrorCollection" /> 中的元素數目大於 <see cref="T:System.Array" /> 的 <see cref="P:System.Array.Length" />。</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> 為 null。</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="index" /> 對 <paramref name="array" /> 無效。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeErrorCollection.Count">
+      <summary>取得集合中的 <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 物件數目。</summary>
+      <returns>集合中的 <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 物件總數。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeErrorCollection.GetEnumerator">
+      <summary>傳回列舉值，可逐一查看 <see cref="T:System.Data.SqlServerCe.SqlCeErrorCollection" />。</summary>
+      <returns>
+        <see cref="T:System.Collections.IEnumerator" />
+      </returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeErrorCollection.Item(System.Int32)">
+      <summary>取得在指定索引處的錯誤。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeError" />，包含指定索引處的錯誤。</returns>
+      <param name="index">要擷取之 <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 的以零為基底的索引。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeErrorCollection.System#Collections#ICollection#IsSynchronized"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeErrorCollection.System#Collections#ICollection#SyncRoot"></member>
+    <member name="T:System.Data.SqlServerCe.SqlCeException">
+      <summary>當基礎提供者從 SQL Server Compact 資料來源傳回警告或錯誤時，所擲回的例外狀況。這個類別無法被繼承。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>協助序列化的建構函式。</summary>
+      <param name="info">序列化資訊。</param>
+      <param name="context">資料流內容。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeException.Errors">
+      <summary>取得一個或多個<see cref="T:System.Data.SqlServerCe.SqlCeError" /> 物件的集合，這些物件包含由 .NET Compact Framework Data Provider for SQL Server Compact 所產生之例外狀況的相關詳細資訊。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeErrorCollection" /> 物件，包含針對例外狀況所收集的 <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 類別的執行個體。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>[安全性關鍵]使用序列化物件時所需的資料來擴展 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</summary>
+      <param name="info">序列化資訊。</param>
+      <param name="context">資料流內容。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeException.HResult">
+      <summary>取得例外狀況的 HRESULT 值。這個值與例外狀況的 <see cref="T:System.Data.SqlServerCe.SqlCeErrorCollection" /> 中的第一個 <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 執行個體的 <see cref="P:System.Data.SqlServerCe.SqlCeError.HResult" /> 值相同。</summary>
+      <returns>HRESULT 值。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeException.Message">
+      <summary>取得描述此例外狀況的 <see cref="T:System.Data.SqlServerCe.SqlCeErrorCollection" /> 中第一個 <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 執行個體的文字。</summary>
+      <returns>描述錯誤的文字。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeException.NativeError">
+      <summary>取得  <see cref="T:System.Data.SqlServerCe.SqlCeErrorCollection" /> 中第一個 <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 的原生錯誤號碼。如需有關此錯誤的詳細資訊，請參閱《SQL Server Compact 線上叢書》中＜疑難排解＞一節內的「SQL Server Compact 錯誤」主題。</summary>
+      <returns>傳回 <see cref="T:System.Int32" />。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeException.Source">
+      <summary>取得產生錯誤的 OLE DB 提供者名稱。</summary>
+      <returns>產生錯誤的 OLE DB 提供者名稱。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeFlushFailureEventArgs">
+      <summary>封裝 <see cref="E:System.Data.SqlServerCe.SqlCeConnection.FlushFailure" /> 事件的事件引數。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeFlushFailureEventArgs.Errors">
+      <summary>導致清除失敗之 <see cref="T:System.Data.SqlServerCe.SqlCeError" /> 物件的集合。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeFlushFailureEventArgs.Message">
+      <summary>取得文字以描述導致清除失敗的 <see cref="T:System.Data.SqlServerCe.SqlCeError" />。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeFlushFailureEventArgs.ToString"></member>
+    <member name="T:System.Data.SqlServerCe.SqlCeFlushFailureEventHandler">
+      <summary>接聽 <see cref="E:System.Data.SqlServerCe.SqlCeConnection.FlushFailure" /> 事件時必須實作的委派 (Delegate)。</summary>
+      <param name="sender">事件的來源。</param>
+      <param name="e">包含事件資料的 <see cref="T:System.Data.SqlServerCe.SqlCeFlushFailureEventArgs" />。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeInfoMessageEventArgs">
+      <summary>提供 <see cref="E:System.Data.SqlServerCe.SqlCeConnection.InfoMessage" /> 事件的資料。這個類別無法被繼承。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeInfoMessageEventArgs.Errors">
+      <summary>取得傳送自資料來源的警告集合。</summary>
+      <returns>傳送自資料來源的警告集合。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeInfoMessageEventArgs.Message">
+      <summary>取得傳送自資料來源的錯誤完整文字。</summary>
+      <returns>錯誤的完整文字。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeInfoMessageEventArgs.ToString">
+      <summary>擷取 <see cref="E:System.Data.SqlServerCe.SqlCeConnection.InfoMessage" /> 事件的字串表示。</summary>
+      <returns>表示 <see cref="E:System.Data.SqlServerCe.SqlCeConnection.InfoMessage" /> 事件的字串。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeInfoMessageEventHandler">
+      <summary>表示處理 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 的 <see cref="E:System.Data.SqlServerCe.SqlCeConnection.InfoMessage" /> 事件的方法。</summary>
+      <param name="sender">事件的來源。</param>
+      <param name="e">包含事件資料的 <see cref="T:System.Data.SqlServerCe.SqlCeInfoMessageEventArgs" />。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeInvalidDatabaseFormatException">
+      <summary> 當 SQL Server Compact 嘗試開啟舊或新版本的資料庫檔案，基礎提供者從 Microsoft SQL Server Compact 資料來源傳回錯誤時所擲回的例外狀況。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeInvalidDatabaseFormatException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>協助序列化的建構函式。</summary>
+      <param name="info">序列化資訊。</param>
+      <param name="context">資料流內容。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeInvalidDatabaseFormatException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>[安全性關鍵]使用序列化物件時所需的資料來擴展 <see cref="T:System.Runtime.Serialization.SerializationInfo" />。</summary>
+      <param name="info">序列化資訊。</param>
+      <param name="context">資料流內容。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeLockTimeoutException">
+      <summary>如果已達到鎖定逾時，會擲回這個例外狀況。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeLockTimeoutException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>協助序列化的建構函式。</summary>
+      <param name="info">序列化資訊。</param>
+      <param name="context">資料流內容。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeLockTimeoutException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>[安全性關鍵] 使用序列化物件時所需的資料來擴展 SerializationInfo。</summary>
+      <param name="info">序列化資訊。</param>
+      <param name="context">資料流內容。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeParameter">
+      <summary>表示 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 的參數，或是它對 <see cref="T:System.Data.DataSet" /> 資料行的對應。這個類別無法被繼承。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.#ctor">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.#ctor(System.String,System.Data.SqlDbType)">
+      <summary>使用參數名稱和資料類型初始化 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 類別的新執行個體。</summary>
+      <param name="name">要對應的參數名稱。</param>
+      <param name="dataType">其中一個 <see cref="T:System.Data.SqlDbType" /> 值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.#ctor(System.String,System.Data.SqlDbType,System.Int32)">
+      <summary>使用參數名稱、資料類型和長度，初始化 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 類別的新執行個體。</summary>
+      <param name="name">要對應的參數名稱。</param>
+      <param name="dataType">其中一個 <see cref="T:System.Data.SqlDbType" /> 值。</param>
+      <param name="size">參數的長度。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.#ctor(System.String,System.Data.SqlDbType,System.Int32,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+      <summary>使用參數名稱、資料類型、長度和其他屬性，初始化 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 類別的新執行個體。SQL Server Compact 只支援輸入參數。</summary>
+      <param name="parameterName">參數的名稱。</param>
+      <param name="dbType">其中一個 <see cref="T:System.Data.SqlDbType" /> 值。</param>
+      <param name="size">參數的長度。</param>
+      <param name="isNullable">如果欄位值可以是 null，則為 true，否則為 false。</param>
+      <param name="precision">
+        <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" /> 所解析的小數點左右側的位數總數。</param>
+      <param name="scale">
+        <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" /> 所解析的小數點位數的總數。</param>
+      <param name="sourceColumn">來源資料行的名稱。</param>
+      <param name="sourceVersion">其中一個 <see cref="T:System.Data.DataRowVersion" /> 值。</param>
+      <param name="value">
+        <see cref="T:System.Object" />，是 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.#ctor(System.String,System.Data.SqlDbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+      <summary>使用參數名稱、資料類型、長度、參數方向和其他屬性，初始化 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 類別的新執行個體。SQL Server Compact 只支援輸入參數。</summary>
+      <param name="parameterName">參數的名稱。</param>
+      <param name="dbType">其中一個 <see cref="T:System.Data.SqlDbType" /> 值。</param>
+      <param name="size">參數的長度。</param>
+      <param name="direction">要使用的 <see cref="P:System.Data.ParameterDirection" />。</param>
+      <param name="isNullable">如果欄位值可以是 null，則為 true，否則為 false。</param>
+      <param name="precision">
+        <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" /> 所解析的小數點左右側的位數總數。</param>
+      <param name="scale">
+        <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" /> 所解析的小數點位數的總數。</param>
+      <param name="sourceColumn">來源資料行的名稱。</param>
+      <param name="sourceVersion">其中一個 <see cref="T:System.Data.DataRowVersion" /> 值。</param>
+      <param name="value">
+        <see cref="T:System.Object" />，是 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.#ctor(System.String,System.Data.SqlDbType,System.Int32,System.String)">
+      <summary>使用參數名稱、資料類型、長度和來源資料行名稱，初始化 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 類別的新執行個體。</summary>
+      <param name="name">要對應的參數名稱。</param>
+      <param name="dataType">其中一個 <see cref="T:System.Data.SqlDbType" /> 值。</param>
+      <param name="size">參數的長度。</param>
+      <param name="sourceColumn">來源資料行的名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.#ctor(System.String,System.Object)">
+      <summary>使用參數名稱以及新 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 的值，初始化 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 類別的新執行個體。</summary>
+      <param name="name">要對應的參數名稱。</param>
+      <param name="value">新 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件的值。</param>
+      <exception cref="T:System.ArgumentException">提供給此參數的值無法轉換為 SQL Server Compact 支援的資料庫類型。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.DbType">
+      <summary>取得或設定參數的 <see cref="T:System.Data.DbType" />。</summary>
+      <returns>其中一個 <see cref="T:System.Data.DbType" /> 值。預設值為 <see cref="F:System.Data.DbType.String" />。</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">屬性未設定為有效的 <see cref="T:System.Data.DbType" />。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.Direction">
+      <summary>這個屬性一定會針對 .NET Compact Framework Data Provider for SQL Server Compact 傳回 ParameterDirection.Input。將這個屬性設成不同的值會導致擲回 <see cref="T:System.InvalidOperationException" />。</summary>
+      <returns>這個屬性一定會針對 SQL Server Compact Data Provider 傳回 ParameterDirection.Input。不支援這個屬性的設定。</returns>
+      <exception cref="T:System.InvalidOperationException">使用者嘗試設定這個屬性。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.IsNullable">
+      <summary>取得或設定指出該參數是否接受 null 值的值。</summary>
+      <returns>如果接受 null 值則為 true，否則為 false。預設為 false。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.Offset"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.ParameterName">
+      <summary>取得或設定 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 的名稱。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 的名稱。預設為空字串。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.Precision">
+      <summary>取得或設定用來表示 <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" /> 屬性的最大位數。</summary>
+      <returns>用來表示 <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" /> 屬性的最大位數。預設值為 0。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.ResetDbType">
+      <summary>重設與此 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 相關聯的類型。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.Scale">
+      <summary>取得或設定 <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" /> 所解析的小數點位數。</summary>
+      <returns>
+        <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" /> 所解析的小數點位數。預設值為 0。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.Size">
+      <summary>取得或設定資料行中資料的最大長度。</summary>
+      <returns>資料行中資料的最大長度。預設值是由參數值推斷。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.SourceColumn">
+      <summary>取得或設定來源資料行的名稱，這個資料行對應至 <see cref="T:System.Data.DataSet" />，並用於載入或傳回 <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" />。</summary>
+      <returns>來源資料行名稱，對應至 <see cref="T:System.Data.DataSet" />。預設為空字串。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.SourceColumnNullMapping"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.SourceVersion">
+      <summary>取得或設定 <see cref="T:System.Data.DataRowVersion" />，以在載入 <see cref="P:System.Data.SqlServerCe.SqlCeParameter.Value" /> 時使用。</summary>
+      <returns>其中一個 <see cref="T:System.Data.DataRowVersion" /> 值。預設值為 Current。</returns>
+      <exception cref="T:System.ArgumentException">屬性未設定為其中一個 <see cref="T:System.Data.DataRowVersion" /> 值。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.SqlDbType">
+      <summary>取得或設定參數的 <see cref="T:System.Data.SqlDbType" />。</summary>
+      <returns>其中一個 <see cref="T:System.Data.SqlDbType" /> 值。預設值為 NVarChar。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.System#ICloneable#Clone"></member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameter.ToString">
+      <summary>取得包含 <see cref="P:System.Data.SqlServerCe.SqlCeParameter.ParameterName" /> 的字串。</summary>
+      <returns>包含 <see cref="P:System.Data.SqlServerCe.SqlCeParameter.ParameterName" /> 的字串。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameter.Value">
+      <summary>取得或設定參數的值。</summary>
+      <returns>
+        <see cref="T:System.Object" />，為參數的值。預設值為 null。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeParameterCollection">
+      <summary>收集與 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 相關的所有參數，以及這些參數的 <see cref="T:System.Data.DataSet" /> 資料行個別對應。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Add(System.Data.SqlServerCe.SqlCeParameter)">
+      <summary>將指定的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 加入至 <see cref="T:System.Data.SqlServerCe.SqlCeParameterCollection" />。</summary>
+      <returns>新 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件的參考。</returns>
+      <param name="value">要加入至集合的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Add(System.Object)">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件加入至 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />。</summary>
+      <returns>新 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件在集合中的索引。</returns>
+      <param name="value">要加入至集合的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件。</param>
+      <exception cref="T:System.InvalidCastException">傳遞的參數不是 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Add(System.String,System.Data.SqlDbType)">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 加入至 <see cref="T:System.Data.SqlServerCe.SqlCeParameterCollection" /> (已知參數名稱和資料類型)。</summary>
+      <returns>新 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件的參考。</returns>
+      <param name="parameterName">參數的名稱。</param>
+      <param name="type">其中一個 SqlDbType 值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Add(System.String,System.Data.SqlDbType,System.Int32)">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 加入至 <see cref="T:System.Data.SqlServerCe.SqlCeParameterCollection" /> (已知參數名稱、資料類型和資料行寬度)。</summary>
+      <returns>新 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件的參考。</returns>
+      <param name="parameterName">參數的名稱。</param>
+      <param name="type">其中一個 SqlDbType 值。</param>
+      <param name="size">資料行的寬度。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Add(System.String,System.Data.SqlDbType,System.Int32,System.String)">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 加入至 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> (已知參數名稱、資料類型、資料行寬度和來源資料行名稱)。</summary>
+      <returns>新 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件的參考。</returns>
+      <param name="parameterName">參數的名稱。</param>
+      <param name="type">其中一個 SqlDbType 值。</param>
+      <param name="size">資料行的寬度。</param>
+      <param name="sourceColumn">來源資料行的名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Add(System.String,System.Object)">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 加入至 <see cref="T:System.Data.SqlServerCe.SqlCeParameterCollection" /> (已知參數名稱和值)。</summary>
+      <returns>新 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件的參考。</returns>
+      <param name="parameterName">參數的名稱。</param>
+      <param name="value">要加入至集合的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 的 <see cref="T:System.Object" /> 值。</param>
+      <exception cref="T:System.InvalidCastException">無法將提供做為 <paramref name="value" /> 參數的物件轉換成字串。如果此物件不是基本類型、SqlDbType 或位元組陣列，則會發生這個情況。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.AddRange(System.Array)">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件陣列加入至 <see cref="T:System.Data.SqlServerCe.SqlCeParameterCollection" />。</summary>
+      <param name="values">要加入至集合之 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 類別的值陣列。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.AddWithValue(System.String,System.Object)">
+      <summary>將新的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 加入至 <see cref="T:System.Data.SqlServerCe.SqlCeParameterCollection" />，並設定其值。</summary>
+      <param name="parameterName">為 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 命名。</param>
+      <param name="value">
+        <paramref name="parameterName" /> 的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Clear">
+      <summary>從集合移除所有項目。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Contains(System.Object)">
+      <summary>取得表示 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件是否存在於集合中的值。</summary>
+      <returns>如果集合包含 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 則為 true，否則為 false。</returns>
+      <param name="value">要尋找的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Contains(System.String)">
+      <summary>取得表示 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> (具有指定的參數名稱) 是否存在於集合中的值。</summary>
+      <returns>如果集合含有此參數則為 true，否則為 false。</returns>
+      <param name="value">參數的名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.CopyTo(System.Array,System.Int32)">
+      <summary>將 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件從 <see cref="T:System.Data.SqlServerCe.SqlCeParameterCollection" /> 複製到指定的陣列。</summary>
+      <param name="array">要在其中複製 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件的 <see cref="T:System.Array" />。</param>
+      <param name="index">陣列的起始索引。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameterCollection.Count">
+      <summary>取得集合中的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件數目。</summary>
+      <returns>集合中的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件數目。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.GetEnumerator"></member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.IndexOf(System.Object)">
+      <summary>取得集合中的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件位置。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 在集合中以零為基底的位置。</returns>
+      <param name="value">要尋找的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.IndexOf(System.String)">
+      <summary>取得具有指定參數名稱的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 在集合中的位置。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 在集合中的位置。</returns>
+      <param name="parameterName">要尋找的參數名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Insert(System.Int32,System.Object)">
+      <summary>在集合中的指定索引處插入 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</summary>
+      <param name="index">以零為基底的索引，指出要在集合內插入參數的所在。</param>
+      <param name="value">要加入至集合的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameterCollection.IsFixedSize"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameterCollection.IsReadOnly"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameterCollection.IsSynchronized"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameterCollection.Item(System.Int32)">
+      <summary>取得或設定指定索引處的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</summary>
+      <returns>指定索引處的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</returns>
+      <param name="index">要擷取之參數的以零為基底的索引。</param>
+      <exception cref="T:System.IndexOutOfRangeException">指定的索引不存在。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameterCollection.Item(System.String)">
+      <summary>取得或設定具有指定名稱的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</summary>
+      <returns>具有指定名稱的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</returns>
+      <param name="parameterName">要擷取的參數名稱。</param>
+      <exception cref="T:System.IndexOutOfRangeException">指定的名稱不存在。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.Remove(System.Object)">
+      <summary>從集合移除指定的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</summary>
+      <param name="value">要從集合移除的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" /> 物件。</param>
+      <exception cref="T:System.SystemException">參數不存在。</exception>
+      <exception cref="T:System.InvalidCastException">參數不是 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.RemoveAt(System.Int32)">
+      <summary>從集合的指定索引處移除 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</summary>
+      <param name="index">要移除之參數的以零為基底的索引。</param>
+      <exception cref="T:System.IndexOutOfRangeException">指定的索引不存在。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeParameterCollection.RemoveAt(System.String)">
+      <summary>從集合移除具有指定名稱的 <see cref="T:System.Data.SqlServerCe.SqlCeParameter" />。</summary>
+      <param name="parameterName">要移除的參數名稱。</param>
+      <exception cref="T:System.ArgumentException">具有指定名稱的參數不存在於集合中。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeParameterCollection.SyncRoot"></member>
+    <member name="T:System.Data.SqlServerCe.SqlCeProviderFactory">
+      <summary>表示用於建立資料來源類別之提供者實作執行個體的一組方法。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeProviderFactory.#ctor">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.SqlCeProviderFactory" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeProviderFactory.CreateCommand">
+      <summary>傳回實作 <see cref="T:System.Data.Common.DbCommand" /> 之提供者類別的新執行個體。</summary>
+      <returns>
+        <see cref="System.Data.Common.DbCommand" /> 的新執行個體。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeProviderFactory.CreateCommandBuilder">
+      <summary>傳回提供者類別的新執行個體，該類別實作 <see cref="System.Data.Common.DbCommandBuilder" />。</summary>
+      <returns>
+        <see cref="System.Data.Common.DbCommandBuilder" /> 的新執行個體。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeProviderFactory.CreateConnection">
+      <summary>傳回提供者類別的新執行個體，該類別實作 <see cref="System.Data.Common.DbConnection" />。</summary>
+      <returns>
+        <see cref="System.Data.Common.DbConnection" /> 的新執行個體。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeProviderFactory.CreateConnectionStringBuilder">
+      <summary>傳回實作此類別之提供者類別的新執行個體。</summary>
+      <returns>類別的新執行個體。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeProviderFactory.CreateDataAdapter">
+      <summary>傳回提供者類別的新執行個體，該類別實作 <see cref="System.Data.Common.DbDataAdapter" />。</summary>
+      <returns>
+        <see cref="System.Data.Common.DbDataAdapter." /> 的新執行個體。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeProviderFactory.CreateParameter">
+      <summary>傳回實作 <see cref="System.Data.Common.DbParameter" /> 之提供者類別的新執行個體。</summary>
+      <returns>
+        <see cref="System.Data.Common.DbParameter" /> 的新執行個體。</returns>
+    </member>
+    <member name="F:System.Data.SqlServerCe.SqlCeProviderFactory.Instance">
+      <summary>
+        <see cref="T:System.Data.SqlServerCe.SqlCeProviderFactory" /> 的執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeProviderFactory.System#IServiceProvider#GetService(System.Type)">
+      <summary>取得服務類型。</summary>
+      <returns>傳回 <see cref="T:System.Object" />。</returns>
+      <param name="serviceType">服務類型。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeRemoteDataAccess">
+      <summary>[安全性關鍵]初始化 <see cref="T:System.Data.SqlServerCe.SqlCeRemoteDataAccess" /> 物件的新執行個體。如需有關「遠端資料存取」的詳細資訊，請參閱＜使用遠端資料存取 (RDA)＞。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.#ctor">
+      <summary>[安全性關鍵]初始化 <see cref="T:System.Data.SqlServerCe.SqlCeRemoteDataAccess" /> 物件的新執行個體。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.#ctor(System.String,System.String)">
+      <summary>[安全性關鍵]初始化 <see cref="T:System.Data.SqlServerCe.SqlCeRemoteDataAccess" /> 物件的新執行個體並進行設定，以便對 Microsoft Internet Information Services (IIS) 進行匿名存取。</summary>
+      <param name="internetUrl">用於連接到 SQL Server Compact 伺服器代理程式的 URL。</param>
+      <param name="localConnectionString">SQL Server Compact 資料庫的 OLE DB 連接字串。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.#ctor(System.String,System.String,System.String,System.String)">
+      <summary>[安全性關鍵]初始化 <see cref="T:System.Data.SqlServerCe.SqlCeRemoteDataAccess" /> 物件的新執行個體並進行設定，以便對 Microsoft Internet Information Services (IIS) 進行基本驗證或整合式 Windows 驗證。</summary>
+      <param name="internetUrl">用於連接到 SQL Server Compact 伺服器代理程式的 URL。</param>
+      <param name="internetLogin">連接到 SQL Server Compact 伺服器代理程式時使用的登入名稱。</param>
+      <param name="internetPassword">連接到 SQL Server Compact 伺服器代理程式時使用的密碼。</param>
+      <param name="localConnectionString">SQL Server Compact 資料庫的 OLE DB 連接字串。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.CompressionLevel">
+      <summary>[安全性關鍵]指定壓縮常式會在發送和提取作業期間使用的壓縮量。</summary>
+      <returns>已設定的壓縮層級。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.ConnectionManager">
+      <summary>[安全性關鍵]使 <see cref="T:System.Data.SqlServerCe.SqlCeRemoteDataAccess" /> 物件能夠使用智慧型裝置的「連線管理員 API」建立網路連接，並於同步處理結束時釋放連接。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.ConnectionRetryTimeout">
+      <summary>[安全性關鍵]指定 SQL Server Compact 用戶端將繼續重試傳送已失敗之要求的時間 (以秒為單位)。</summary>
+      <returns>
+        <see cref="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.ConnectionRetryTimeout" /> 值，預設值為 120 秒。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.ConnectTimeout">
+      <summary>[安全性關鍵]取得或設定 <see cref="T:System.Data.SqlServerCe.SqlCeRemoteDataAccess" /> 物件等候伺服器要求回應的時間 (以毫秒為單位)。</summary>
+      <returns>表示逾時的 <see cref="T:System.Int32" /> 值 (以毫秒為單位)，無預設值。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.Dispose">
+      <summary>[安全性關鍵]釋放所有 Unmanaged 資源。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.InternetLogin">
+      <summary>[安全性關鍵]指定連接到 SQL Server Compact 伺服器代理程式時使用的 Microsoft Internet Information Services (IIS) 登入名稱。</summary>
+      <returns>連接到 SQL Server Compact 伺服器代理程式時使用的 IIS 登入名稱。預設為沒有登入。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.InternetPassword">
+      <summary>[安全性關鍵]指定連接到 SQL Server Compact 伺服器代理程式時所使用的 Microsoft Internet Information Services (IIS) 密碼。</summary>
+      <returns>連接到 SQL Server Compact 伺服器代理程式時使用的 IIS 密碼字串。預設為沒有密碼。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.InternetProxyLogin">
+      <summary>[安全性關鍵]指定在連接到需要驗證的 Proxy 伺服器 (定義於 <see cref="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.InternetProxyServer" /> 屬性) 時所使用的登入名稱。</summary>
+      <returns>Proxy 伺服器登入名稱。預設為沒有登入。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.InternetProxyPassword">
+      <summary>[安全性關鍵]指定在連接到需要驗證的 Proxy 伺服器 (定義於 <see cref="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.InternetProxyServer" /> 屬性) 時所使用的密碼。</summary>
+      <returns>Proxy 伺服器密碼字串。預設為沒有密碼。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.InternetProxyServer">
+      <summary>[安全性關鍵]指定在存取 <see cref="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.InternetUrl" /> 屬性指定的 HTTP 資源時所使用的 Proxy 伺服器。</summary>
+      <returns>存取指定的 HTTP 資源時，所使用的 Proxy 伺服器名稱 (或 IP 位址) 以及通訊埠編號 (<paramref name="ProxyServerName:Port" />)。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.InternetUrl">
+      <summary>[安全性關鍵]指定用來連接到 SQL Server Compact 伺服器代理程式的 URL。SQL Server Compact 伺服器代理程式是將 SQL Server Compact 用戶端連接到 MicrosoftSQL Server 資料庫的 Microsoft Internet Information Services (IIS) ISAPI DLL。必須指定這個屬性。</summary>
+      <returns>包含 SQL Server Compact 伺服器代理程式之 URL 的字串 (包括它的檔案名稱 Sqlcesa35.dll)。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.LocalConnectionString">
+      <summary>[安全性關鍵]指定 SQL Server Compact 資料庫的連接字串。</summary>
+      <returns>SQL Server Compact 資料庫的連接字串。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.Pull(System.String,System.String,System.String)">
+      <summary>[安全性關鍵]從遠端 SQL Server 資料庫下載資料，並且將資料儲存在本機 SQL Server Compact 資料庫的單一資料表中。</summary>
+      <param name="localTableName">SQL Server Compact 資料表的名稱，此資料表將接收擷取的 SQL Server 資料錄。如果資料表已經存在，便會發生錯誤。</param>
+      <param name="sqlSelectString">任何有效的 Transact-SQL 陳述式 (包括 SELECT 陳述式和預存程序)，這種陳述式會指定要從 SQL Server 資料庫中擷取哪些資料表、資料行和資料錄，以便儲存於 SQL Server Compact 資料庫中。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.Pull(System.String,System.String,System.String,System.Data.SqlServerCe.RdaTrackOption)">
+      <summary>[安全性關鍵]從遠端 SQL Server 資料庫下載資料，並且將資料儲存在本機 SQL Server Compact 資料庫的單一資料表中。</summary>
+      <param name="localTableName">SQL Server Compact 資料表的名稱，此資料表將接收擷取的 SQL Server 資料錄。如果資料表已經存在，便會發生錯誤。</param>
+      <param name="sqlSelectString">任何有效的 Transact-SQL 陳述式 (包括 SELECT 陳述式和預存程序)，這種陳述式會指定要從 SQL Server 資料庫中擷取哪些資料表、資料行和資料錄，以便儲存於 SQL Server Compact 資料庫中。</param>
+      <param name="trackOption">這個選項會指出 SQL Server Compact 是否要追蹤對提取之資料表所做的變更，以及是否要將提取之資料表上的索引傳到具有 PRIMARY KEY 條件約束的裝置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.Pull(System.String,System.String,System.String,System.Data.SqlServerCe.RdaTrackOption,System.String)">
+      <summary>[安全性關鍵]從遠端 SQL Server 資料庫下載資料，並且將資料儲存在本機 SQL Server Compact 資料庫的單一資料表中。</summary>
+      <param name="localTableName">SQL Server Compact 資料表的名稱，此資料表將接收擷取的 SQL Server 資料錄。如果資料表已經存在，便會發生錯誤。</param>
+      <param name="sqlSelectString">任何有效的 Transact-SQL 陳述式 (包括 SELECT 陳述式和預存程序)，這種陳述式會指定要從 SQL Server 資料庫中擷取哪些資料表、資料行和資料錄，以便儲存於 SQL Server Compact 資料庫中。</param>
+      <param name="trackOption">這個選項會指出 SQL Server Compact 是否要追蹤對提取之資料表所做的變更，以及是否要將提取之資料表上的索引傳到具有 PRIMARY KEY 條件約束的裝置。</param>
+      <param name="errorTable">本機錯誤資料表的名稱，如果在稍後呼叫 <see cref="Overload:System.Data.SqlServerCe.SqlCeRemoteDataAccess.Push" /> 方法將變更傳回 SQL Server 時發生錯誤，就會建立這種資料表。此選項只有在 <paramref name="RdaTrackOption" /> 值是 <see cref="F:System.Data.SqlServerCe.RdaTrackOption.TrackingOn" /> 或 <see cref="F:System.Data.SqlServerCe.RdaTrackOption.TrackingOnWithIndexes" /> 時才可以指定。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.Push(System.String,System.String)">
+      <summary>[安全性關鍵]將 SQL Server Compact 中提取之追蹤資料表的變更傳輸回起始的 SQL Server 資料表。這些變更會以個別交易，獨立套用到伺服器上。</summary>
+      <param name="localTableName">SQL Server Compact 資料表的名稱，此資料表將接收擷取的 SQL Server 資料錄。如果資料表已經存在，便會發生錯誤。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.Push(System.String,System.String,System.Data.SqlServerCe.RdaBatchOption)">
+      <summary>[安全性關鍵]將 SQL Server Compact 中提取之追蹤資料表的變更傳輸回 SQL Server 資料表。這些變更可以獨立套用到伺服器，或於單一交易中一起批次處理。</summary>
+      <param name="localTableName">SQL Server Compact 資料表的名稱，此資料表將接收擷取的 SQL Server 資料錄。如果資料表已經存在，便會發生錯誤。</param>
+      <param name="batchOption">這個選項指出要傳回 SQL Server 資料表的變更應於單一交易中一起批次處理，或是應該個別套用。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.ReceiveTimeout">
+      <summary>[安全性關鍵]取得或設定 <see cref="T:System.Data.SqlServerCe.SqlCeRemoteDataAccess" /> 物件等候伺服器要求回應的時間 (以毫秒為單位)。</summary>
+      <returns>表示逾時的 <see cref="T:System:Int32" /> 值 (以毫秒為單位)，預設值為 60 秒。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRemoteDataAccess.SendTimeout">
+      <summary>[安全性關鍵]取得或設定 <see cref="T:System.Data.SqlServerCe.SqlCeRemoteDataAccess" /> 物件等候傳送要求到伺服器的時間 (以毫秒為單位)。</summary>
+      <returns>表示逾時的 <see cref="T:System.Int32" /> 值 (以毫秒為單位)，無預設值。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRemoteDataAccess.SubmitSql(System.String,System.String)">
+      <summary>[安全性關鍵]會送出 SQL 陳述式，以便在遠端伺服器上的 SQL Server 資料庫中執行。</summary>
+      <param name="sqlString">任何不會傳回資料列的 SQL 陳述式。</param>
+      <param name="oleDBConnectionString">遠端 SQL Server 資料庫的 OLE DB 連接字串。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeReplication">
+      <summary>[安全性關鍵]初始化 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件的新執行個體。如需有關 SQL Server 複寫的詳細資訊，請參閱《SQL Server 線上叢書》。如需有關 SQL Server Compact 合併式複寫的詳細資訊，請參閱《SQL Server Compact 線上叢書》。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.#ctor">
+      <summary>[安全性關鍵]初始化 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件的新執行個體。這是預設建構函式 (Constructor)。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+      <summary>[安全性關鍵]初始化 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件的新執行個體，並設定必要屬性，以連接至發行集。</summary>
+      <param name="internetUrl">用於連接到 SQL Server Compact 伺服器代理程式的 URL。</param>
+      <param name="internetLogin">連接到 SQL Server Compact 伺服器代理程式時使用的登入名稱。</param>
+      <param name="internetPassword">連接到 SQL Server Compact 伺服器代理程式時使用的密碼。</param>
+      <param name="publisher">「發行者」的名稱。</param>
+      <param name="publisherDatabase">發行集資料庫的名稱。</param>
+      <param name="publication">已經針對匿名合併訂閱啟用的發行集名稱。</param>
+      <param name="subscriber">「訂閱者」的名稱。</param>
+      <param name="subscriberConnectionString">SQL Server Compact 資料庫在 Windows Mobile 裝置上的 OLE DB 連接字串。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+      <summary>[安全性關鍵]初始化 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件的新執行個體，並設定用來連接至發行集的屬性。</summary>
+      <param name="internetUrl">用於連接到 SQL Server Compact 伺服器代理程式的 URL。</param>
+      <param name="internetLogin">連接到 SQL Server Compact 伺服器代理程式時使用的登入名稱。</param>
+      <param name="internetPassword">連接到 SQL Server Compact 伺服器代理程式時使用的密碼。</param>
+      <param name="publisher">「發行者」的名稱。</param>
+      <param name="publisherDatabase">發行集資料庫的名稱。</param>
+      <param name="publisherLogin">連接至「發行者」時使用的登入名稱。</param>
+      <param name="publisherPassword">連接至「發行者」時使用的登入密碼。</param>
+      <param name="publication">已經針對匿名合併訂閱啟用的發行集名稱。</param>
+      <param name="subscriber">「訂閱者」的名稱。</param>
+      <param name="subscriberConnectionString">SQL Server Compact 資料庫在 Windows Mobile 裝置上的 OLE DB 連接字串。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.AddSubscription(System.Data.SqlServerCe.AddOption)">
+      <summary>[安全性關鍵]建立現有 SQL Server 發行集的新匿名訂閱。在呼叫 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.AddSubscription(System.Data.SqlServerCe.AddOption)" /> 方法之後，應用程式必須呼叫 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.Synchronize" /> 方法，以根據最新的快照集，將新的訂閱與發行集同步處理。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.BeginSynchronize(System.AsyncCallback,System.Data.SqlServerCe.OnStartTableUpload,System.Data.SqlServerCe.OnStartTableDownload,System.Data.SqlServerCe.OnSynchronization,System.Object)">
+      <summary>[安全性關鍵]啟動非同步資料的同步處理作業。當同步處理結束時，將呼叫 <see cref="T:System.AsyncCallback" /> 委派。在同步處理期間，同步處理狀態報告會傳送至 SyncStatusReport 委派。</summary>
+      <returns>非同步作業的 <see cref="T:System.IAsyncResult" /> 介面，已透過呼叫這個函數來啟動。您可以使用這個介面，測試同步處理是否完成，或是等候同步處理結束。</returns>
+      <param name="onSyncCompletion">由呼叫端實作並於同步處理結束時呼叫的 <see cref="T:System.AsyncCallback" /> 委派。</param>
+      <param name="onStartTableUpload">事件之使用者定義的委派，此委派會在開始將資料表變更上傳至伺服器時引發。</param>
+      <param name="onStartTableDownload">事件之使用者定義的委派，此委派會在開始從伺服器下載資料表變更時引發。</param>
+      <param name="onSynchronization">使用者定義的委派，此委派會使用調節者運作期間所報告的進行中同步處理事件。</param>
+      <param name="state">
+        <see cref="P:System.IAsyncResult.AsyncState" /> 屬性傳回之使用者定義的物件。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.BeginSynchronize(System.AsyncCallback,System.Object)">
+      <summary>[安全性關鍵]啟動非同步資料的同步處理作業。當同步處理結束時，將呼叫 <see cref="T:System.AsyncCallback" /> 委派。在同步處理期間，不會執行狀態報告。</summary>
+      <returns>非同步作業的 <see cref="T:System.IAsyncResult" /> 介面，已透過呼叫這個函數來啟動。您可以使用這個介面，測試同步處理是否完成，或是等候同步處理結束。</returns>
+      <param name="onSyncCompletion">由呼叫端實作並於同步處理結束時呼叫的 <see cref="T:System.IAsyncResult" /> 委派。</param>
+      <param name="state">
+        <see cref="P:System.IAsyncResult.AsyncState" /> 屬性傳回之使用者定義的物件。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.CancelSynchronize">
+      <summary>[安全性關鍵]取消正在進行的非同步的資料同步處理，此作業是藉由呼叫 <see cref="Overload:System.Data.SqlServerCe.SqlCeReplication.BeginSynchronize" /> 方法而啟動。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.CompressionLevel">
+      <summary>[安全性關鍵]指定壓縮常式會在複寫期間使用的壓縮量。</summary>
+      <returns>壓縮層級。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.ConnectionManager">
+      <summary>[安全性關鍵]讓 Replication 物件能夠使用智慧型裝置的連接管理員 API 來建立網路連接。此連接會在同步處理結束時釋放。</summary>
+      <returns>如果使用連接管理員設定，則為 true，否則為 false。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.ConnectionRetryTimeout">
+      <summary>[安全性關鍵]指定在連接建立失敗之後，SQL Server Compact 用戶端將繼續重試傳送要求的時間長度 (以秒為單位)。</summary>
+      <returns>
+        <see cref="P:System.Data.SqlServerCe.SqlCeReplication.ConnectionRetryTimeout" /> 值，預設值為 120 秒。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.ConnectTimeout">
+      <summary>[安全性關鍵]取得或設定 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件等候伺服器要求回應的時間 (以毫秒為單位)。</summary>
+      <returns>表示逾時的 <see cref="T:System:Int32" /> 值 (以毫秒為單位)，無預設值。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.Dispose">
+      <summary>[安全性關鍵]釋放所有原生 (Native) 資源。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.Distributor">
+      <summary>[安全性關鍵]指定 SQL Server「散發者」。</summary>
+      <returns>發行者使用的散發者名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.DistributorAddress">
+      <summary>[安全性關鍵]指定當 SQL Server Reconciler 連接到「散發者」時使用的網路位址。</summary>
+      <returns>連接至散發者時使用的網路位址。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.DistributorLogin">
+      <summary>[安全性關鍵]指定連接至散發者時使用的登入名稱。</summary>
+      <returns>連接至散發者時使用的登入名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.DistributorNetwork">
+      <summary>[安全性關鍵]指定當 SQL Server Reconciler 與「散發者」進行通訊時所使用的網路通訊協定。</summary>
+      <returns>SQL Server Reconciler 用來與「散發者」進行通訊時所使用的 <see cref="T:System.Data.SqlServerCe.NetworkType" /> 常數。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.DistributorPassword">
+      <summary>[安全性關鍵]指定連接至散發者時使用的登入密碼。</summary>
+      <returns>連接至散發者時使用的密碼。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.DistributorSecurityMode">
+      <summary>[安全性關鍵]指定連接至散發者時使用的安全性模式。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SecurityType" /> 常數，指定在「散發者」上強制使用的安全模式。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.DropSubscription(System.Data.SqlServerCe.DropOption)">
+      <summary>[安全性關鍵]卸除 SQL Server 發行集的訂閱，並選擇性地從 Windows Mobile 裝置中刪除 SQL Server Compact 資料庫。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.EndSynchronize(System.IAsyncResult)">
+      <summary>[安全性關鍵]結束非同步的資料同步處理，此作業是藉由呼叫 <see cref="Overload:System.Data.SqlServerCe.SqlCeReplication.BeginSynchronize" /> 方法而啟動。</summary>
+      <param name="ar">
+        <see cref="T:System.IAsyncResult" /> 介面，由 <see cref="Overload:System.Data.SqlServerCe.SqlCeReplication.BeginSynchronize" /> 方法而傳回。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.ExchangeType">
+      <summary>[安全性關鍵]指定發行者和散發者間的同步處理為雙向或僅為上傳。</summary>
+      <returns>
+        <see cref="P:System.Data.SqlServerCe.SqlCeReplication.ExchangeType" /> 常數，指定資料僅向上合併至「發行者」，或是在「發行者」和「訂閱者」之間進行雙向合併。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.HostName">
+      <summary>[安全性關鍵]取得或設定在連接至發行者用於裝置的主機名稱。</summary>
+      <returns>裝置的主機名稱。預設為沒有主機名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.InternetLogin">
+      <summary>[安全性關鍵]指定連接至 SQL Server Compact 伺服器代理程式時使用的登入名稱。</summary>
+      <returns>網際網路資訊服務 (IIS) 登入名稱。預設為沒有登入名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.InternetPassword">
+      <summary>[安全性關鍵]指定連接至「SQL Server Compact 伺服器代理程式」時使用的密碼。</summary>
+      <returns>「網際網路資訊服務」(IIS) 密碼字串。預設為沒有密碼。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.InternetProxyLogin">
+      <summary>[安全性關鍵]指定連接到需要驗證之 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.InternetProxyServer" /> 時使用的登入名稱。</summary>
+      <returns>Proxy 伺服器登入名稱。預設為沒有登入名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.InternetProxyPassword">
+      <summary>[安全性關鍵]指定連接到需要驗證之 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.InternetProxyServer" /> 時使用的密碼。</summary>
+      <returns>Proxy 伺服器密碼字串。預設為沒有密碼。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.InternetProxyServer">
+      <summary>[安全性關鍵]指定在存取 <see cref="P:System.Data.SqlServerCe.SqlCeReplication.InternetUrl" /> 屬性指定的 HTTP 資源時所使用的 Proxy 伺服器。</summary>
+      <returns>Proxy 伺服器名稱 (或 IP 位址) 以及選擇性的通訊埠編號，其格式如下：<paramref name="ProxyServerName" />:<paramref name="Port" /></returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.InternetUrl">
+      <summary>[安全性關鍵]指定用來連接到「SQL Server Compact 伺服器代理程式」的 URL。</summary>
+      <returns>URL 字串。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.LoadProperties">
+      <summary>[安全性關鍵]擷取針對同步處理屬性儲存的所有值，然後將這些儲存的值填入 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 類別屬性。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.LoginTimeout">
+      <summary>[安全性關鍵]指定等待建立連接的最大秒數。這個屬性會影響執行 Internet Information Services (IIS) 的電腦和發行者或散發者之間的連接時間。但其不會控制智慧型裝置和 IIS 之間的連接時間。</summary>
+      <returns>建立連接的秒數。預設值為 15 秒。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.PostSyncCleanup">
+      <summary>[安全性關鍵]取得或設定值，這個值會選擇性地啟用或停用所執行的同步後清除作業類型。</summary>
+      <returns>指定要執行之同步後清除作業的值。您可以選擇性地啟用或停用更新統計資料作業 (UpdateStats) 和依照保留清除作業 (CleanByRetention)。如需詳細資訊，請參閱＜備註＞一節。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.ProfileName">
+      <summary>[安全性關鍵]指定散發者上代理程式設定檔的名稱，這個設定檔要由 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件使用。</summary>
+      <returns>代理程式設定檔名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.Publication">
+      <summary>[安全性關鍵]指定已經針對 SQL Server Compact 訂閱者啟用 SQL Server 發行集名稱。</summary>
+      <returns>發行物的名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.Publisher">
+      <summary>[安全性關鍵]指定 SQL Server 發行者的名稱。發行者就是執行 SQL Server 並包含發行集的電腦。</summary>
+      <returns>「發行者」的名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.PublisherAddress">
+      <summary>[安全性關鍵]指定連接至發行者時使用的網路位址。</summary>
+      <returns>連接至發行者時使用的網路位址。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.PublisherChanges">
+      <summary>[安全性關鍵]指定上次呼叫 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.Synchronize" /> 方法時，套用在「訂閱者」的「發行者」變更總數。</summary>
+      <returns>插入、更新及刪除的發行者資料列總數。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.PublisherConflicts">
+      <summary>[安全性關鍵]指定上次呼叫 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.Synchronize" /> 方法時，在「發行者」發生的衝突總數。</summary>
+      <returns>發生的衝突數目。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.PublisherDatabase">
+      <summary>[安全性關鍵]指定發行資料庫的名稱。</summary>
+      <returns>發行集資料庫的名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.PublisherLogin">
+      <summary>[安全性關鍵]指定連接至發行者時使用的登入名稱。</summary>
+      <returns>發行者登入名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.PublisherNetwork">
+      <summary>[安全性關鍵]指定當 SQL Server「複寫提供者」與「發行者」進行通訊時所使用的網路通訊協定。</summary>
+      <returns>指定所使用之網路通訊協定的 <see cref="T:System.Data.SqlServerCe.NetworkType" /> 常數：</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.PublisherPassword">
+      <summary>[安全性關鍵]指定連接至發行者時使用的密碼。</summary>
+      <returns>使用者密碼。預設值為沒有密碼 (空字串)。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.PublisherSecurityMode">
+      <summary>[安全性關鍵]指定連接至發行者時使用的安全性模式。</summary>
+      <returns>指定安全性模式的 <see cref="T:System.Data.SqlServerCe.SecurityType" /> 常數。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.QueryTimeout">
+      <summary>[安全性關鍵]指定內部查詢完成的可容許秒數。</summary>
+      <returns>傳回內部查詢的可容許秒數。預設值為 300 秒。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.ReceiveTimeout">
+      <summary>[安全性關鍵]取得或設定 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件等候伺服器要求回應的時間 (以毫秒為單位)。</summary>
+      <returns>表示逾時的 <see cref="T:System:Int32" /> 值 (以毫秒為單位)，預設值為 60 秒。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.ReinitializeSubscription(System.Boolean)">
+      <summary>[安全性關鍵]標記訂閱以重新初始化。呼叫這個方法之後，應用程式必須呼叫 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.Synchronize" /> 方法，將發行集的最新快照集下載到裝置。</summary>
+      <param name="uploadBeforeReinitialize">如果為 True，則在「訂閱者」套用快照集之前，訂閱資料庫中的變更會上傳到「發行者」。預設值為 False。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.SaveProperties">
+      <summary>[安全性關鍵]針對目前的訂閱，擷取儲存於 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 類別屬性中的所有值，然後將這些值儲存在系統資料表中。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.SendTimeout">
+      <summary>[安全性關鍵]取得或設定 <see cref="T:System.Data.SqlServerCe.SqlCeReplication" /> 物件等候傳送要求到伺服器的時間 (以毫秒為單位)。</summary>
+      <returns>表示逾時的 <see cref="T:System.Int32" /> 值 (以毫秒為單位)，無預設值。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.SnapshotTransferType">
+      <summary>[安全性關鍵]控制快照集檔案如何從「散發者」傳輸到執行 IIS 的電腦。可以使用 HTTP 或 FTP 通訊協定來傳輸快照集檔案。</summary>
+      <returns>
+        <see cref="P:System.Data.SqlServerCe.SqlCeReplication.SnapshotTransferType" /> 值。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.Subscriber">
+      <summary>[安全性關鍵]指定訂閱者的名稱。</summary>
+      <returns>訂閱者名稱。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.SubscriberChanges">
+      <summary>[安全性關鍵]指定上次呼叫 <see cref="M:System.Data.SqlServerCe.SqlCeReplication.Synchronize" /> 方法時，套用在「發行者」的「訂閱者」變更總數。</summary>
+      <returns>插入、更新及刪除的訂閱者資料列總數。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.SubscriberConflicts">
+      <summary>[安全性關鍵]SQL Server Compact 不會使用這個屬性。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.SubscriberConnectionString">
+      <summary>[安全性關鍵]指定 SQL Server Compact 資料庫的連接字串。</summary>
+      <returns>SQL Server Compact 資料庫的連接字串。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeReplication.Synchronize">
+      <summary>[安全性關鍵]叫用 SQL Server Compact 訂閱與「SQL Server 發行者」之間的合併式複寫。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeReplication.Validate">
+      <summary>[安全性關鍵]指定 SQL Server Compact 複寫在同步處理時所執行的資料驗證類型。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.ValidateType" /> 常數，指定要執行的資料驗證類型。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeResultSet">
+      <summary>可更新、可捲動和可繫結的游標。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.#ctor">
+      <summary>[安全性關鍵]不要使用。若要建立 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" />，則必須呼叫 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" /> 的 <see cref="M:System.Data.Sql.ISqlExecutionContext.ExecuteResultSet(System.Data.ResultSetOptions)" /> 方法。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeResultSet.ContainsListCollection"></member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.CreateRecord">
+      <summary>在伺服器上建立新的資料列並傳回 <see cref="T:System.Data.SqlServerCe.SqlCeUpdatableRecord" /> 物件。</summary>
+      <returns>SqlCeUpdatableRecord，其中已預先填入 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 的中繼資料。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.Delete">
+      <summary>從伺服器上的資料來源刪除目前的資料錄。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetBoolean(System.Int32)">
+      <summary>將指定索引處的資料行值當做布林值 (Boolean) 傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetByte(System.Int32)">
+      <summary>將指定索引處的資料行值當做位元組傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+      <summary>從指定欄位的指定位置開始，將某一段位元組複製到緩衝區。</summary>
+      <returns>實際複製到緩衝區的位元組數目。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+      <param name="dataIndex">要從中開始複製資料之欄位中的位移 (Offset) (以位元組為單位)。</param>
+      <param name="buffer">要複製資料的目的緩衝區。</param>
+      <param name="bufferIndex">緩衝區中開始複製的位移。</param>
+      <param name="length">要複製的最大位元組數目。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+      <summary>從指定欄位的指定位置開始，將某一段的字元複製到緩衝區。</summary>
+      <returns>已複製的實際字元數目。</returns>
+      <param name="ordinal">要從中擷取資料之欄位的序數位置。</param>
+      <param name="dataIndex">欄位中開始複製的位移 (以字元為單位)。</param>
+      <param name="buffer">要複製資料的目的緩衝區。</param>
+      <param name="bufferIndex">緩衝區中開始複製的位移。</param>
+      <param name="length">要複製的最大位元組數目。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetDateTime(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 DateTime 傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetDecimal(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 Double 傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetDouble(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 Double 傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetEnumerator">
+      <summary>傳回 <see cref="T:System.Collections.IEnumerator" />，可用來逐一查看資料讀取器中的資料列。</summary>
+      <returns>
+        <see cref="T:System.Collections.IEnumerator" />。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetFloat(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 Float 傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetGuid(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 GUID 傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetInt16(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 Int16 傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetInt32(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 Int32 傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">TBD</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetInt64(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 Int64 傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetList">
+      <summary>傳回 <see cref="T:System.Data.SqlServerCe.ResultSetView" /> 的執行個體。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.ResultSetView" /> 物件。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlBinary(System.Int32)">
+      <summary>將指定之索引處的資料行當做 SqlBinary 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlBoolean(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlBoolean 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlByte(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlByte 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlDateTime(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlDateTime 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlDecimal(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlDecimal 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlDouble(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlDouble 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlGuid(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlGuid 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlInt16(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlInt16 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlInt32(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlInt32 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlInt64(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlInt64 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlMetaData(System.Int32)">
+      <summary>傳回與指定資料行關聯的中繼資料資訊。</summary>
+      <returns>指定索引處的資料行中繼資料。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlMoney(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlMoney 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlSingle(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlSingle 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetSqlString(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 SqlString 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetString(System.Int32)">
+      <summary>將指定之索引處的資料行值當做 String 類型傳回。</summary>
+      <returns>指定索引處的資料行值。</returns>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetValue(System.Int32)">
+      <summary>傳回指定欄位的值。</summary>
+      <returns>包含指定欄位值的物件。</returns>
+      <param name="ordinal">要擷取值的來源資料行之序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.GetValues(System.Object[])">
+      <summary>擷取其中包含指定之資料錄所有欄位的陣列。</summary>
+      <returns>陣列中的執行個體數目。</returns>
+      <param name="values">儲存傳回值之類型為 Object 的陣列。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.Insert(System.Data.SqlServerCe.SqlCeUpdatableRecord)">
+      <summary>在基礎資料列集中插入指定的 <see cref="T:System.Data.SqlServerCe.SqlCeUpdatableRecord" />。</summary>
+      <param name="record">要插入的資料錄。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.Insert(System.Data.SqlServerCe.SqlCeUpdatableRecord,System.Data.SqlServerCe.DbInsertOptions)">
+      <summary>在基礎資料列集中插入指定的 <see cref="T:System.Data.SqlServerCe.SqlCeUpdatableRecord" />，並指定資料指標的位置。</summary>
+      <param name="record">要插入的資料錄。</param>
+      <param name="options">
+        <see cref="T:System.Data.SqlServerCe.DbInsertOptions" /> 選項，用以指定資料指標在插入後的放置方式。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.IsDBNull(System.Int32)">
+      <summary>判斷指定序數位置的欄位是否為 null。</summary>
+      <returns>如果指定的欄位是 null 則為 true，否則為 false。</returns>
+      <param name="ordinal">要擷取值的來源資料行之序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.IsSetAsDefault(System.Int32)">
+      <summary>判斷指定序數位置的欄位是否已標記為使用基礎預設值。</summary>
+      <returns>如果指定的欄位已標記為要使用基礎預設值則為 true，否則為 false。</returns>
+      <param name="ordinal">要擷取值的來源資料行之序數位置。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeResultSet.Item(System.Int32)">
+      <summary>可用來當做 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 的索引子。</summary>
+      <returns>指定索引處的記錄。</returns>
+      <param name="index">此項目在 ResultSet 中的位置。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeResultSet.Item(System.String)">
+      <summary>可用來當做 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 的索引子。</summary>
+      <returns>符合指定名稱的資料錄。</returns>
+      <param name="name">資料錄在 ResultSet 中的名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.OnMove"></member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.ReadAbsolute(System.Int32)">
+      <summary>將讀取器移至 ResultSet 中的特定資料錄。</summary>
+      <returns>如果作業執行成功則為 true，否則為 false。</returns>
+      <param name="position">讀取器要移至的位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.ReadFirst">
+      <summary>將讀取器放在 ResultSet 的第一個資料錄上。</summary>
+      <returns>如果作業執行成功則為 true，否則為 false。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.ReadLast">
+      <summary>將讀取器放在 ResultSet 的最後一個資料錄上。</summary>
+      <returns>如果作業執行成功則為 true，否則為 false。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.ReadPrevious">
+      <summary>將讀取器放在目前資料錄的前一個資料錄。</summary>
+      <returns>如果作業執行成功則為 true，否則為 false。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.ReadRelative(System.Int32)">
+      <summary>從目前的位置將讀取器移動指定的數目。</summary>
+      <returns>如果作業執行成功則為 true，否則為 false。</returns>
+      <param name="position">移動讀取器的位置數目。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeResultSet.ResultSetView">
+      <summary>用於將 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 資料繫結到控制項時。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.ResultSetView" />。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeResultSet.Scrollable">
+      <summary>決定 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 是否可捲動。</summary>
+      <returns>如果 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 是可捲動的，則為 true；否則為 false。</returns>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeResultSet.Sensitivity">
+      <summary>決定 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 的敏感度。</summary>
+      <returns>
+        <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 的 <see cref="T:System.Data.SqlServerCe.ResultSetSensitivity" />。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetBoolean(System.Int32,System.Boolean)">
+      <summary>將指定資料行的值設定為傳入的布林值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetByte(System.Int32,System.Byte)">
+      <summary>將指定資料行的值設定為傳入的位元組值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+      <summary>從該欄位內的指定位置開始，將某一段位元組從指定的緩衝區複製到指定的資料行。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="dataIndex">資料行內開始複製資料的位置。</param>
+      <param name="buffer">包含要複製之資料的緩衝區。</param>
+      <param name="bufferIndex">緩衝區中複製資料的位移。</param>
+      <param name="length">要複製的最大位元組數目。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetChar(System.Int32,System.Char)">
+      <summary>將指定資料行的值設定為傳入的字元值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="c">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+      <summary>從該欄位內的指定位置開始，將某個長度的字元從指定的緩衝區複製到指定的資料行。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="dataIndex">資料行內開始複製資料的位置。</param>
+      <param name="buffer">包含要複製之資料的緩衝區。</param>
+      <param name="bufferIndex">緩衝區中複製資料的位移。</param>
+      <param name="length">要複製的最大位元組數目。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetDateTime(System.Int32,System.DateTime)">
+      <summary>將指定資料行的值設定為傳入的 DateTime 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetDecimal(System.Int32,System.Decimal)">
+      <summary>將指定資料行的值設定為傳入的十進位值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetDefault(System.Int32)">
+      <summary>將指定的資料行設定為其預設值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetDouble(System.Int32,System.Double)">
+      <summary>將指定資料行的值設定為傳入的雙精度浮點數 (Double) 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetFloat(System.Int32,System.Single)">
+      <summary>將指定資料行的值設定為傳入的浮點數 (Float) 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetGuid(System.Int32,System.Guid)">
+      <summary>將指定資料行的值設定為傳入的 Guid 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetInt16(System.Int32,System.Int16)">
+      <summary>將指定資料行的值設定為傳入的 Int16 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetInt32(System.Int32,System.Int32)">
+      <summary>將指定資料行的值設定為傳入的 Int32 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetInt64(System.Int32,System.Int64)">
+      <summary>將指定資料行的值設定為傳入的 Int64 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetObjectRef(System.Int32,System.Object)">
+      <summary>將物件繫結至指定位置的資料行。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="buffer">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlBinary(System.Int32,System.Data.SqlTypes.SqlBinary)">
+      <summary>將指定資料行的值設定為傳入的 SqlBinary 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlBoolean(System.Int32,System.Data.SqlTypes.SqlBoolean)">
+      <summary>將指定資料行的值設定為傳入的 SqlBoolean 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlByte(System.Int32,System.Data.SqlTypes.SqlByte)">
+      <summary>將指定資料行的值設定為傳入的 SqlByte 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlDateTime(System.Int32,System.Data.SqlTypes.SqlDateTime)">
+      <summary>將指定資料行的值設定為傳入的 SqlDateTime 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlDecimal(System.Int32,System.Data.SqlTypes.SqlDecimal)">
+      <summary>將指定資料行的值設定為傳入的 SqlDecimal 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlDouble(System.Int32,System.Data.SqlTypes.SqlDouble)">
+      <summary>將指定資料行的值設定為傳入的 SqlDouble 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlGuid(System.Int32,System.Data.SqlTypes.SqlGuid)">
+      <summary>將指定資料行的值設定為傳入的 SqlGuid 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlInt16(System.Int32,System.Data.SqlTypes.SqlInt16)">
+      <summary>將指定資料行的值設定為傳入的 SqlInt16 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlInt32(System.Int32,System.Data.SqlTypes.SqlInt32)">
+      <summary>將指定資料行的值設定為傳入的 SqlInt32 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlInt64(System.Int32,System.Data.SqlTypes.SqlInt64)">
+      <summary>將指定資料行的值設定為傳入的 SqlInt64 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlMoney(System.Int32,System.Data.SqlTypes.SqlMoney)">
+      <summary>將指定資料行的值設定為傳入的 SqlMoney 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlSingle(System.Int32,System.Data.SqlTypes.SqlSingle)">
+      <summary>將指定資料行的值設定為傳入的 SqlSingle 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetSqlString(System.Int32,System.Data.SqlTypes.SqlString)">
+      <summary>將指定資料行的值設定為傳入的 SqlString 值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetString(System.Int32,System.String)">
+      <summary>將指定資料行的值設定為傳入的字串值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetValue(System.Int32,System.Object)">
+      <summary>將指定資料行的值設定為傳入的值。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="value">要指派給指定資料行的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.SetValues(System.Object[])">
+      <summary>將指定資料錄中的每個欄位設定為指定陣列中的對應值。</summary>
+      <returns>從陣列複製的值數目。</returns>
+      <param name="values">包含要設定之值的陣列。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.System#Collections#IEnumerable#GetEnumerator"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeResultSet.System#ComponentModel#IListSource#ContainsListCollection"></member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.System#ComponentModel#IListSource#GetList"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeResultSet.Updatable">
+      <summary>決定 <see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 內的值是否可修改。</summary>
+      <returns>如果可以修改資料錄中的值則為 true，否則為 false。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeResultSet.Update">
+      <summary>將變更從目前的資料錄傳送至伺服器上的基礎資料列。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeRowUpdatedEventArgs">
+      <summary>提供 <see cref="E:System.Data.SqlServerCe.SqlCeDataAdapter.RowUpdated" /> 事件的資料。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRowUpdatedEventArgs.#ctor(System.Data.DataRow,System.Data.IDbCommand,System.Data.StatementType,System.Data.Common.DataTableMapping)">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.SqlCeRowUpdatedEventArgs" /> 類別的新執行個體。</summary>
+      <param name="dataRow">透過 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 傳送的 <see cref="T:System.Data.DataRow" />。</param>
+      <param name="command">在呼叫 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 時執行的 <see cref="T:System.Data.IDbCommand" />。</param>
+      <param name="statementType">其中一個 <see cref="T:System.Data.StatementType" /> 值，指定執行的查詢類型。</param>
+      <param name="tableMapping">透過 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 傳送的 <see cref="T:System.Data.Common.DataTableMapping" />。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRowUpdatedEventArgs.Command">
+      <summary>取得在呼叫 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 時執行的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />。</summary>
+      <returns>在呼叫 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 時執行的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeRowUpdatedEventHandler">
+      <summary>表示處理 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 的 <see cref="E:System.Data.SqlServerCe.SqlCeDataAdapter.RowUpdated" /> 事件的方法。</summary>
+      <param name="sender">事件的來源。</param>
+      <param name="e">包含事件資料的 <see cref="T:System.Data.SqlServerCe.SqlCeRowUpdatedEventArgs" />。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeRowUpdatingEventArgs">
+      <summary>提供 <see cref="E:System.Data.SqlServerCe.SqlCeDataAdapter.RowUpdating" /> 事件的資料。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeRowUpdatingEventArgs.#ctor(System.Data.DataRow,System.Data.IDbCommand,System.Data.StatementType,System.Data.Common.DataTableMapping)">
+      <summary>初始化 <see cref="T:System.Data.SqlServerCe.SqlCeRowUpdatingEventArgs" /> 類別的新執行個體。</summary>
+      <param name="dataRow">
+        <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 的 <see cref="T:System.Data.DataRow" />。</param>
+      <param name="command">在 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 期間執行的 <see cref="T:System.Data.IDbCommand" />。</param>
+      <param name="statementType">其中一個 <see cref="T:System.Data.StatementType" /> 值，指定執行的查詢類型。</param>
+      <param name="tableMapping">透過 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 傳送的 <see cref="T:System.Data.Common.DataTableMapping" />。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeRowUpdatingEventArgs.Command">
+      <summary>取得或設定要在執行 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 時執行的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />。</summary>
+      <returns>要在執行 <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)" /> 時執行的 <see cref="T:System.Data.SqlServerCe.SqlCeCommand" />。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeRowUpdatingEventHandler">
+      <summary>表示處理 <see cref="T:System.Data.SqlServerCe.SqlCeDataAdapter" /> 的 <see cref="E:System.Data.SqlServerCe.SqlCeDataAdapter.RowUpdating" /> 事件的方法。</summary>
+      <param name="sender">事件的來源。</param>
+      <param name="e">包含事件資料的 <see cref="T:System.Data.SqlServerCe.SqlCeRowUpdatingEventArgs" />。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeTransaction">
+      <summary>表示要在資料來源進行的 SQL 交易。這個類別無法被繼承。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeTransaction.Commit">
+      <summary>認可資料庫交易。</summary>
+      <exception cref="T:System.Exception">嘗試認可交易時發生錯誤。</exception>
+      <exception cref="T:System.InvalidOperationException">已認可或復原交易。-或-連接中斷。</exception>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeTransaction.Commit(System.Data.SqlServerCe.CommitMode)">
+      <summary>使用指定的 <see cref="T:System.Data.SqlServerCe.CommitMode" /> 認可資料庫交易。</summary>
+      <exception cref="T:System.Exception">嘗試認可交易時發生錯誤。</exception>
+      <exception cref="T:System.InvalidOperationException">已認可或復原交易。-或-連接中斷。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeTransaction.CurrentTransactionBsn">
+      <summary>取得交易的開始序號 (BSN)。</summary>
+      <returns>交易的 BSN。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeTransaction.Dispose">
+      <summary>釋放與交易相關聯的所有 <see cref="T:System.Data.SqlServerCe.SqlCeConnection" /> 物件。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeTransaction.IsolationLevel">
+      <summary>針對此交易指定 <see cref="T:System.Data.IsolationLevel" />。</summary>
+      <returns>此交易的 <see cref="T:System.Data.IsolationLevel" />。.NET Compact Framework Data Provider for SQL Server Compact 支援 ReadCommitted、Serializable 和 ReadRepeatable 隔離等級。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeTransaction.Rollback">
+      <summary>從暫止狀態復原交易。</summary>
+      <exception cref="T:System.Exception">嘗試認可交易時發生錯誤。</exception>
+      <exception cref="T:System.InvalidOperationException">已認可或復原交易。-或-連接中斷。</exception>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeTransaction.TrackingContext">
+      <summary>取得或設定應用程式特有的內容資訊，而交易會讓這項資訊與 SQL Server Compact 資料庫資料表上的追蹤作業產生關聯。</summary>
+      <returns>代表應用程式特有資訊的值。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeTransactionInProgressException">
+      <summary> 當正在進行交易時嘗試作業，基礎提供者從 Microsoft SQL Server Compact 資料來源傳回錯誤時所擲回的例外狀況。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeTransactionInProgressException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>協助序列化的建構函式。</summary>
+      <param name="info">序列化資訊。</param>
+      <param name="context">資料流內容。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeTransactionInProgressException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>[安全性關鍵] 使用序列化物件時所需的資料來擴展 SerializationInfo。</summary>
+      <param name="info">序列化資訊。</param>
+      <param name="context">資料流內容。</param>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlCeType"></member>
+    <member name="P:System.Data.SqlServerCe.SqlCeType.SqlDbType"></member>
+    <member name="M:System.Data.SqlServerCe.SqlCeType.ToString"></member>
+    <member name="T:System.Data.SqlServerCe.SqlCeUpdatableRecord">
+      <summary>表示資料來源中可更新之值的資料列。<see cref="T:System.Data.SqlServerCe.SqlCeResultSet" /> 物件包含一個或多個 UpdatableRecords。</summary>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeUpdatableRecord.FieldCount">
+      <summary>傳回指定資料錄中的欄位數目。</summary>
+      <returns>資料錄中的欄位數目。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetBoolean(System.Int32)">
+      <summary>以 bool 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetByte(System.Int32)">
+      <summary>以 byte 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+      <summary>從指定欄位的指定位置開始，將某一段位元組複製到緩衝區。</summary>
+      <param name="ordinal">要從中擷取資料之資料行的序數位置。</param>
+      <param name="dataIndex">要從中開始複製資料之欄位中的位移 (Offset) (以位元組為單位)。</param>
+      <param name="buffer">要複製資料的目的緩衝區。</param>
+      <param name="bufferIndex">緩衝區中開始複製的位移。</param>
+      <param name="length">要複製的最大位元組數目。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetChar(System.Int32)">
+      <summary>以 char 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+      <summary>從指定欄位的指定位置開始，將某一段 char 複製到緩衝區。</summary>
+      <param name="ordinal">要從中擷取資料之欄位的序數位置。</param>
+      <param name="dataIndex">欄位中開始複製的位移 (以字元為單位)。</param>
+      <param name="buffer">要複製資料的目的緩衝區。</param>
+      <param name="bufferIndex">緩衝區中開始複製的位移。</param>
+      <param name="length">要複製的最大位元組數目。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetData(System.Int32)">
+      <summary>傳回位在目前資料錄上的 <see cref="T:System.Data.SqlServerCe.SqlCeDataReader" />。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetDataTypeName(System.Int32)">
+      <summary>傳回指定之欄位的 datatype 名稱。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetDateTime(System.Int32)">
+      <summary>以 DateTime 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetDecimal(System.Int32)">
+      <summary>以 decimal 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetDouble(System.Int32)">
+      <summary>以 double 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetFieldType(System.Int32)">
+      <summary>傳回指定欄位的 CLR 資料類型。</summary>
+      <returns>欄位的 CLR 資料類型。</returns>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetFloat(System.Int32)">
+      <summary>以 float 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetGuid(System.Int32)">
+      <summary>將 GUID 的值傳回指定欄位。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetInt16(System.Int32)">
+      <summary>以 int16 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetInt32(System.Int32)">
+      <summary>以 int32 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetInt64(System.Int32)">
+      <summary>以 int64 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetName(System.Int32)">
+      <summary>傳回指定欄位的名稱。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetOrdinal(System.String)">
+      <summary>傳回在傳入名稱中指定之欄位的序數。</summary>
+      <param name="name">要從中判斷序數的欄位名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlBinary(System.Int32)">
+      <summary>以 SqlBinary 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlBoolean(System.Int32)">
+      <summary>以 SqlBoolean 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlByte(System.Int32)">
+      <summary>以 SqlByte 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlBytesRef(System.Int32)">
+      <summary>傳回 SqlBytes 執行個體的參考，這個執行個體包含指定之欄位的值。</summary>
+      <returns>SqlBytes 執行個體的參考。</returns>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlCharsRef(System.Int32)">
+      <summary>傳回 SqlChars 執行個體的參考，這個執行個體包含指定之欄位的值。</summary>
+      <returns>SqlChars 執行個體的參考。</returns>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlDateTime(System.Int32)">
+      <summary>以 SqlDateTime 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlDecimal(System.Int32)">
+      <summary>以 SqlDecimal 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlDouble(System.Int32)">
+      <summary>以 SqlDouble 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlGuid(System.Int32)">
+      <summary>以 SqlGuid 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlInt16(System.Int32)">
+      <summary>以 SqlInt16 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlInt32(System.Int32)">
+      <summary>以 SqlInt32 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlInt64(System.Int32)">
+      <summary>以 SqlInt64 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlMetaData(System.Int32)">
+      <summary>以 SqlMetaData 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlMoney(System.Int32)">
+      <summary>以 SqlMoney 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlSingle(System.Int32)">
+      <summary>以 SqlSingle 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetSqlString(System.Int32)">
+      <summary>以 SqlString 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetString(System.Int32)">
+      <summary>以 string 形式傳回指定之欄位的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetValue(System.Int32)">
+      <summary>傳回指定資料錄的值。</summary>
+      <param name="ordinal">要從中擷取值的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.GetValues(System.Object[])">
+      <summary>傳回資料錄中所有欄位的值。</summary>
+      <param name="values">在其中儲存傳回值的陣列。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeUpdatableRecord.HiddenFieldCount">
+      <summary>傳回資料錄中的隱藏欄位數目。在 SQL Server Compact 中，這個屬性一定會傳回 0。</summary>
+      <returns>一定會傳回 0 這個值。</returns>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.IsDBNull(System.Int32)">
+      <summary>判斷指定的欄位是否為 NULL。</summary>
+      <returns>如果欄位是 NULL 則為 true，否則為 false。</returns>
+      <param name="ordinal">要檢查的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.IsSetAsDefault(System.Int32)">
+      <summary>判斷指定欄位是否已標記為要使用基礎預設值。</summary>
+      <returns>如果欄位已標記為要使用預設值則為 true，否則為 false。</returns>
+      <param name="ordinal">要檢查的欄位。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeUpdatableRecord.Item(System.Int32)">
+      <summary>當做資料錄內特定欄位的索引子。</summary>
+      <param name="ordinal">資料錄內欄位 (資料行) 的序數。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeUpdatableRecord.Item(System.String)">
+      <summary>當做資料錄內特定欄位的索引子。</summary>
+      <param name="name">資料錄內欄位 (資料行) 的名稱。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetBoolean(System.Int32,System.Boolean)">
+      <summary>將指定之索引上的資料行設定為傳入的 bool 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetByte(System.Int32,System.Byte)">
+      <summary>將指定之索引上的資料行設定為傳入的 byte 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+      <summary>從該欄位內的指定位置開始，將某一段位元組從指定的緩衝區複製到指定的資料行。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="dataIndex">資料行內開始複製資料的位置。</param>
+      <param name="buffer">包含要複製之資料的緩衝區。</param>
+      <param name="bufferIndex">緩衝區中複製資料的位移。</param>
+      <param name="length">要複製的最大位元組數目。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetChar(System.Int32,System.Char)">
+      <summary>將指定之索引上的資料行設定為傳入的 char 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+      <summary>將某一段 char 從指定的緩衝區複製到指定的欄位 (從該欄位內的指定位置開始)。</summary>
+      <param name="ordinal">要設定之資料行的序數位置。</param>
+      <param name="dataIndex">資料行內開始複製資料的位置。</param>
+      <param name="buffer">包含要複製之資料的緩衝區。</param>
+      <param name="bufferIndex">緩衝區中複製資料的位移。</param>
+      <param name="length">要複製的最大位元組數目。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetDateTime(System.Int32,System.DateTime)">
+      <summary>將指定之索引上的資料行設定為傳入的 DateTime 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetDecimal(System.Int32,System.Decimal)">
+      <summary>將指定之索引上的資料行設定為傳入的 decimal 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetDefault(System.Int32)">
+      <summary>對指定的欄位設定預設值。</summary>
+      <param name="ordinal">要設定的欄位。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetDouble(System.Int32,System.Double)">
+      <summary>將指定之索引上的資料行設定為傳入的 double 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetFloat(System.Int32,System.Single)">
+      <summary>將指定之索引上的資料行設定為傳入的 float 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetGuid(System.Int32,System.Guid)">
+      <summary>將指定之索引上的資料行設定為傳入的 GUID 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetInt16(System.Int32,System.Int16)">
+      <summary>將指定之索引上的資料行設定為傳入的 int16 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetInt32(System.Int32,System.Int32)">
+      <summary>將指定之索引上的資料行設定為傳入的 int32 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetInt64(System.Int32,System.Int64)">
+      <summary>將指定之索引上的資料行設定為傳入的 int64 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetObjectRef(System.Int32,System.Object)">
+      <summary>以傳址 (By Reference) 方式來設定指定欄位的值，而不是以傳值 (By Value) 方式來設定。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlBinary(System.Int32,System.Data.SqlTypes.SqlBinary)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlBinary 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlBoolean(System.Int32,System.Data.SqlTypes.SqlBoolean)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlBool 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlByte(System.Int32,System.Data.SqlTypes.SqlByte)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlByte 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlDateTime(System.Int32,System.Data.SqlTypes.SqlDateTime)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlDateTime 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlDecimal(System.Int32,System.Data.SqlTypes.SqlDecimal)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlDecimal 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlDouble(System.Int32,System.Data.SqlTypes.SqlDouble)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlDouble 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlGuid(System.Int32,System.Data.SqlTypes.SqlGuid)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlGuid 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlInt16(System.Int32,System.Data.SqlTypes.SqlInt16)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlInt16 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlInt32(System.Int32,System.Data.SqlTypes.SqlInt32)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlInt32 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlInt64(System.Int32,System.Data.SqlTypes.SqlInt64)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlInt64 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlMoney(System.Int32,System.Data.SqlTypes.SqlMoney)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlMoney 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlSingle(System.Int32,System.Data.SqlTypes.SqlSingle)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlSingle 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetSqlString(System.Int32,System.Data.SqlTypes.SqlString)">
+      <summary>將指定之索引上的資料行設定為傳入的 SqlString 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetString(System.Int32,System.String)">
+      <summary>將指定之索引上的資料行設定為傳入的 string 值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetValue(System.Int32,System.Object)">
+      <summary>將指定索引處的資料行設定為傳入的值。</summary>
+      <param name="ordinal">要在其中設定值的欄位。</param>
+      <param name="value">要設定的值。</param>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlCeUpdatableRecord.SetValues(System.Object[])">
+      <summary>將資料錄中的每個欄位設定為傳入陣列中的對應值。</summary>
+      <param name="values">依欄位在資料錄中的出現順序來設定值。</param>
+    </member>
+    <member name="P:System.Data.SqlServerCe.SqlCeUpdatableRecord.Updatable">
+      <summary>指定欄位是否可以更新。</summary>
+      <returns>如果可以更新欄位則為 true，否則為 false。</returns>
+    </member>
+    <member name="T:System.Data.SqlServerCe.SqlMetaData">
+      <summary>指定並擷取從資料庫擷取之參數和資料行的中繼資料 (Metadata) 資訊。這個類別 (Class) 無法被繼承。</summary>
+    </member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.#ctor(System.String,System.Data.SqlDbType)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.#ctor(System.String,System.Data.SqlDbType,System.Byte,System.Byte)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.#ctor(System.String,System.Data.SqlDbType,System.Int64)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.#ctor(System.String,System.Data.SqlDbType,System.Int64,System.Byte,System.Byte,System.Int64,System.Data.SqlTypes.SqlCompareOptions,System.Type)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.#ctor(System.String,System.Data.SqlDbType,System.Int64,System.Int64,System.Data.SqlTypes.SqlCompareOptions)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Boolean)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Byte)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Byte[])"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Char)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Char[])"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlBinary)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlBoolean)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlByte)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlBytes)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlChars)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlDateTime)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlDecimal)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlDouble)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlGuid)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlInt16)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlInt32)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlInt64)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlMoney)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlSingle)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Data.SqlTypes.SqlString)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.DateTime)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Decimal)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Double)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Guid)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Int16)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Int32)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Int64)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Object)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.Single)"></member>
+    <member name="M:System.Data.SqlServerCe.SqlMetaData.Adjust(System.String)"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.CompareOptions"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.DbType"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.LocaleId"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.Max"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.MaxLength"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.Name"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.Precision"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.Scale"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.SqlDbType"></member>
+    <member name="P:System.Data.SqlServerCe.SqlMetaData.TypeName"></member>
+    <member name="T:System.Data.SqlServerCe.TrackingKeyType">
+      <summary>指定用來識別追蹤資料的索引鍵類型。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingKeyType.None">
+      <summary>這個值是保留給追蹤基礎結構使用。請勿將它用於程式碼中。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingKeyType.PrimaryKey">
+      <summary>使用在資料表上定義的主索引鍵來唯一識別資料列。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingKeyType.Guid">
+      <summary>使用在資料表上定義的全域唯一識別碼資料行來唯一識別資料列。這是使用 ROWGUIDCOL 屬性定義且屬於 uniqueidentifier 資料類型的資料行。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingKeyType.Max">
+      <summary>這個值是保留給追蹤基礎結構使用。請勿將它用於程式碼中。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.TrackingOptions">
+      <summary>指定要追蹤資料表上的哪些作業。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingOptions.None">
+      <summary>這個值是保留給追蹤基礎結構使用。請勿將它用於程式碼中。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingOptions.Insert">
+      <summary>只追蹤插入。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingOptions.Update">
+      <summary>只追蹤更新。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingOptions.Delete">
+      <summary>只追蹤刪除。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingOptions.All">
+      <summary>追蹤所有作業。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.TrackingOptions.Max">
+      <summary>這個值是保留給追蹤基礎結構使用。請勿將它用於程式碼中。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.ValidateType">
+      <summary>指定要執行的資料驗證類型。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ValidateType.NoValidation">
+      <summary>指定將不會執行驗證。這是預設值。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.ValidateType.RowCountOnly">
+      <summary>指定將在發行的資料上執行資料列計數比較。</summary>
+    </member>
+    <member name="T:System.Data.SqlServerCe.VerifyOption">
+      <summary>這些選項會決定要使用的資料庫驗證層級。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.VerifyOption.Default">
+      <summary>重新計算資料庫中每一頁的總和檢查碼 (Checksum)，並比較新的總和檢查碼和預期的值。</summary>
+    </member>
+    <member name="F:System.Data.SqlServerCe.VerifyOption.Enhanced">
+      <summary>執行與預設選項相同的檢查並驗證完整性。檢查資料表中的每個索引項目以及索引中的每個資料表項目。這個選項會比較慢但比預設選項更為詳盡。</summary>
+    </member>
+  </members>
+</doc>
